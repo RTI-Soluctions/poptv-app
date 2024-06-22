@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "poptv-test-app",
-    "slug": "poptv-test-app",
+    "name": "Pop TV App",
+    "slug": "poptv-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo-pop.png",
+    "icon": "./assets/icon-pop.png",
     "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash-pop.png",
       "resizeMode": "contain",
       "backgroundColor": "rgb(17, 24, 39)"
     },
@@ -16,12 +16,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/icon-pop.png",
+        "backgroundColor": "rgb(17, 24, 39)"
       }
     },
     "web": {
-      "favicon": "./assets/favicon/favicon.png"
+      "favicon": "./assets/favicon/favicon-pop.png"
     }
   }
 }
