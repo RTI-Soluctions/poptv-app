@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash-pop.png",
       "resizeMode": "contain",
-      "backgroundColor": "rgb(17, 24, 39)"
+      "backgroundColor": "#111827"
     },
     "ios": {
       "supportsTablet": true
@@ -17,11 +17,17 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-pop.png",
-        "backgroundColor": "rgb(17, 24, 39)"
-      }
+        "backgroundColor": "#111827"
+      },
+      "package": "com.ormartins.poptvapp"
     },
     "web": {
       "favicon": "./assets/favicon/favicon-pop.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c3347070-5c2d-48de-b8e1-67ac53e5e918"
+      }
     }
   }
 }

@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { View, useWindowDimensions } from "react-native";
 import { WebView } from "react-native-webview";
 import slidePop from "../../assets/slide-pop.png";
+import { useAppContext } from "../context/AppContext";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 const VIDEO_HEIGHT = 180;
 const SCREEN_SPACE = 24;
 
 export const VideoPlayer = () => {
+  const { isHome, isAboutUs, isContact } = useAppContext();
+
   const { width } = useWindowDimensions();
   const VIDEO_WIDTH = width - SCREEN_SPACE * 2;
 
+  const onScreenFullChange = useCallback((isFullCreen: boolean) => {
+    if (isHome && isFullCreen) {
+      
+    } else {
+      // do something
+    }
+  }, []);
   return (
     <View className="aspect-video w-full max-h-52 bg-gray-800 justify-center">
       <View className="flex-1 justify-center items-center">
@@ -19,6 +30,7 @@ export const VideoPlayer = () => {
             height: VIDEO_HEIGHT,
             backgroundColor: "transparent",
           }}
+          onHttpError={(e) => {}}
           source={{
             html: `
           <iframe
