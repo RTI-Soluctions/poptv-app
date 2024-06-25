@@ -19,7 +19,8 @@
         "foregroundImage": "./assets/icon-pop.png",
         "backgroundColor": "#111827"
       },
-      "package": "com.ormartins.poptvapp"
+      "package": "com.ormartins.poptvapp",
+      "permissions": ["INTERNET"]
     },
     "web": {
       "favicon": "./assets/favicon/favicon-pop.png"

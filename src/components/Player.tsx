@@ -1,5 +1,12 @@
 import React, { useCallback } from "react";
-import { View, useWindowDimensions } from "react-native";
+import {
+  Image,
+  SafeAreaView,
+  StatusBar,
+  ToastAndroid,
+  View,
+  useWindowDimensions,
+} from "react-native";
 import { WebView } from "react-native-webview";
 import slidePop from "../../assets/slide-pop.png";
 import { useAppContext } from "../context/AppContext";
@@ -9,45 +16,50 @@ const VIDEO_HEIGHT = 180;
 const SCREEN_SPACE = 24;
 
 export const VideoPlayer = () => {
-  const { isHome, isAboutUs, isContact } = useAppContext();
+  const [loadError, setLoadError] = React.useState(false);
 
   const { width } = useWindowDimensions();
   const VIDEO_WIDTH = width - SCREEN_SPACE * 2;
 
-  const onScreenFullChange = useCallback((isFullCreen: boolean) => {
-    if (isHome && isFullCreen) {
-      
-    } else {
-      // do something
-    }
-  }, []);
   return (
     <View className="aspect-video w-full max-h-52 bg-gray-800 justify-center">
       <View className="flex-1 justify-center items-center">
-        <WebView
-          style={{
-            width: VIDEO_WIDTH,
-            height: VIDEO_HEIGHT,
-            backgroundColor: "transparent",
-          }}
-          onHttpError={(e) => {}}
-          source={{
-            html: `
-          <iframe
-          src="http://srv26513565.ultasrv.com:8080/hls/test.m3u8"
-          allowfullscreen
-          webkitallowfullscreen
-          mozallowfullscreen
-          oallowfullscreen
-          msallowfullscreen
-          frameborder="0"
-          style="width: 100%; height: 100%; background-image: url(${slidePop}); "
-          border="0"
-          allow="autoplay"
-          ></iframe>
-          `,
-          }}
-        />
+        {loadError ? (
+          <View className="absolute inset-0 flex justify-center items-center">
+            <Image
+              source={slidePop}
+              style={{
+                width: VIDEO_WIDTH,
+                height: VIDEO_HEIGHT,
+                backgroundColor: "transparent",
+              }}
+            />
+          </View>
+        ) : (
+          <WebView
+            source={{ uri: "https://abrir.link/QlXpr" }}
+            style={{
+              width: VIDEO_WIDTH,
+              height: VIDEO_HEIGHT,
+              backgroundColor: "transparent",
+            }}
+            allowUniversalAccessFromFileURLs={true}
+            allowsInlineMediaPlayback={true}
+            allowsFullscreenVideo={true}
+            onError={() => {
+              setLoadError(true);
+              console.log("Error loading video");
+            }}
+            notFoundContent={"Error loading video"}
+            scalesPageToFit={false}
+            mediaPlaybackRequiresUserAction={false}
+            allowingReadAccessToURL="https://abrir.link/QlXpr"
+            allowsLinkPreview={true}
+            allowsAirPlayForMediaPlayback={true}
+            allowsPictureInPictureMediaPlayback={true}
+            allowsBackForwardNavigationGestures={false}
+          />
+        )}
       </View>
     </View>
   );
