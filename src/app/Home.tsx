@@ -23,7 +23,7 @@ export const Home = () => {
       {isContact ? <Contact /> : <></>}
       <View className="bg-gray-900 flex-7 justify-center items-center p-4 absolute bottom-0 w-full">
         <Text className="text-gray-200 font-thin text-sm bg-gray-900">
-          © pop.tv.br 2024
+          ©copyrigth www.pop.tv.br 2024
         </Text>
       </View>
     </View>
