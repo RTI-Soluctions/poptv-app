@@ -1,14 +1,14 @@
 import React from "react";
-import { View, useWindowDimensions } from "react-native";
+import { ScrollView, View } from "react-native";
 import NewPlayer from "./NewVideo";
+import RNVideo from "./RNVideo";
 
 export const VideoPlayer = () => {
-
   return (
-    <View className="aspect-video w-full max-h-52 bg-gray-800 justify-center">
+    <ScrollView className="aspect-video w-full max-h-52 bg-gray-800 flex-1">
       <View className="flex-1 justify-center items-center aspect-video">
-        <NewPlayer />
+        <RNVideo />
       </View>
-    </View>
+    </ScrollView>
   );
 };
