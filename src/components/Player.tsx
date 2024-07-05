@@ -1,6 +1,5 @@
 import React from "react";
 import { ScrollView, View } from "react-native";
-import NewPlayer from "./NewVideo";
 import RNVideo from "./RNVideo";
 
 export const VideoPlayer = () => {

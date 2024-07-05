@@ -45,7 +45,7 @@ export default function RNVideo() {
       <Video
         ref={video}
         source={{
-          uri: "https://ormartins-hls.secdn.net/ormartins-channel/play/ormartins.smil/playlist.m3u8",
+          uri: "https://rtisoluctions.com.br/hls/test.m3u8",
         }}
         shouldPlay
         onLoadStart={() => setIsLoading(true)}
