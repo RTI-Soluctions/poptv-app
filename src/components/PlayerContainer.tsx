@@ -19,10 +19,6 @@ export const PlayerContainer = () => {
         <CarouselComponent />
       </View>
       <Divisor />
-      <View className="justify-center items-center mt-2 mb-8 ">
-        <SocialMedia />
-      </View>
-      <Divisor />
     </View>
   );
 };

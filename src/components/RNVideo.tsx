@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Image, StyleSheet, useWindowDimensions, View } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { Image, ImageBackground, StyleSheet, useWindowDimensions, View } from "react-native";
 import { ResizeMode } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { Video as VideoComponent } from "expo-av";
+import { useKeepAwake } from "expo-keep-awake";
 import slidePop from "../../assets/slide-pop.png";
 
 const Video: any = require("expo-av").Video;
@@ -16,8 +17,9 @@ export default function RNVideo() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const { width } = useWindowDimensions();
   const VIDEO_WIDTH = width - SCREEN_SPACE * 2;
-
   const video = useRef<VideoComponent>(null);
+
+  useKeepAwake();
 
   useEffect(() => {
     const subscription = ScreenOrientation.addOrientationChangeListener(
@@ -67,7 +69,6 @@ export default function RNVideo() {
           position: "absolute",
           width: VIDEO_WIDTH,
           height: videoReady ? VIDEO_HEIGHT : 0,
-          borderWidth: 1,
           borderRadius: 6,
           zIndex: isLoading ? 1 : -1,
         }}
@@ -83,14 +84,12 @@ export default function RNVideo() {
         onFullscreenUpdate={onFullscreenUpdate}
         autoPlay
         useNativeControls={false}
-        
         resizeMode={ResizeMode.CONTAIN}
         isFullScreen={isFullscreen}
         style={{
           flex: 1,
           width: VIDEO_WIDTH,
           height: videoReady ? VIDEO_HEIGHT : 0,
-          borderWidth: 1,
           borderRadius: 6,
           zIndex: isLoading ? -1 : 1,
         }}

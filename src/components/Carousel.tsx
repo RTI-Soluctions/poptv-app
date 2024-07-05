@@ -10,7 +10,7 @@ export const CarouselComponent = () => {
     <View className="bg-gray-800 w-[400] mt-2 mb-32">
       <View>
         <Text className="text-center text-2xl font-bold text-gray-200 mt-4 ">
-          Cidades
+          Já chegamos em:
         </Text>
       </View>
       <View>
