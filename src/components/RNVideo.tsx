@@ -82,7 +82,8 @@ export default function RNVideo() {
         onLoad={() => setIsLoading(false)}
         onFullscreenUpdate={onFullscreenUpdate}
         autoPlay
-        useNativeControls={true}
+        useNativeControls={false}
+        
         resizeMode={ResizeMode.CONTAIN}
         isFullScreen={isFullscreen}
         style={{
