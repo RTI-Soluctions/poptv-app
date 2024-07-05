@@ -20,12 +20,42 @@ export default function RNVideo() {
   const video = useRef<VideoComponent>(null);
 
   useEffect(() => {
+    const subscription = ScreenOrientation.addOrientationChangeListener(
+      ({ orientationInfo }) => {
+        if (
+          orientationInfo.orientation ===
+            ScreenOrientation.Orientation.LANDSCAPE_LEFT ||
+          orientationInfo.orientation ===
+            ScreenOrientation.Orientation.LANDSCAPE_RIGHT
+        ) {
+          video.current?.presentFullscreenPlayer();
+        } else {
+          video.current?.dismissFullscreenPlayer();
+        }
+      }
+    );
+
+    return () => {
+      ScreenOrientation.removeOrientationChangeListener(subscription);
+    };
+  }, []);
+
+  useEffect(() => {
     ScreenOrientation.unlockAsync();
   }, []);
 
   const onFullscreenUpdate = async () => {
+    const orientation = await ScreenOrientation.getOrientationAsync();
+
     if (video.current) {
-      await video.current.presentFullscreenPlayer();
+      if (
+        orientation === ScreenOrientation.Orientation.LANDSCAPE_LEFT ||
+        orientation === ScreenOrientation.Orientation.LANDSCAPE_RIGHT
+      ) {
+        await video.current.presentFullscreenPlayer();
+      } else {
+        await video.current.dismissFullscreenPlayer();
+      }
     }
   };
 
@@ -36,7 +66,7 @@ export default function RNVideo() {
         style={{
           position: "absolute",
           width: VIDEO_WIDTH,
-          height: VIDEO_HEIGHT + 8,
+          height: videoReady ? VIDEO_HEIGHT : 0,
           borderWidth: 1,
           borderRadius: 6,
           zIndex: isLoading ? 1 : -1,
@@ -53,13 +83,12 @@ export default function RNVideo() {
         onFullscreenUpdate={onFullscreenUpdate}
         autoPlay
         useNativeControls={true}
-        resizeMode={ResizeMode.COVER}
+        resizeMode={ResizeMode.CONTAIN}
         isFullScreen={isFullscreen}
         style={{
           flex: 1,
-          backgroundColor: "black",
           width: VIDEO_WIDTH,
-          height: videoReady ? VIDEO_HEIGHT + 8 : 0,
+          height: videoReady ? VIDEO_HEIGHT : 0,
           borderWidth: 1,
           borderRadius: 6,
           zIndex: isLoading ? -1 : 1,
