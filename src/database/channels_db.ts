@@ -10,6 +10,6 @@ export const channels: IChannel[] = [
     },
     {
       city: 'Porto Alegre - RS',
-      channel: '24.1'
+      channel: '23.1'
     },
 ];

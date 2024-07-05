@@ -15,12 +15,14 @@
       "supportsTablet": true
     },
     "android": {
+      "permissions": [
+        "INTERNET"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon-pop.png",
-        "backgroundColor": "#111827"
+        "backgroundColor": "#ffffff"
       },
-      "package": "com.ormartins.poptvapp",
-      "permissions": ["INTERNET"]
+      "package": "com.ormartins.poptvapp"
     },
     "web": {
       "favicon": "./assets/favicon/favicon-pop.png"
@@ -29,6 +31,9 @@
       "eas": {
         "projectId": "c3347070-5c2d-48de-b8e1-67ac53e5e918"
       }
-    }
+    },
+    "plugins": [
+      "expo-video"
+    ]
   }
 }
