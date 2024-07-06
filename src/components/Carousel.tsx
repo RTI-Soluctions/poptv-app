@@ -9,7 +9,7 @@ export const CarouselComponent = () => {
   return (
     <View className="bg-gray-800 w-[400] mt-2 mb-32">
       <View>
-        <Text className="text-center text-2xl font-bold text-gray-200 mt-4 ">
+        <Text className="text-center text-2xl font-bold text-white mt-4 ">
           Já chegamos em:
         </Text>
       </View>
