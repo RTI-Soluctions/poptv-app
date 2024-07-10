@@ -2,7 +2,7 @@
   "expo": {
     "name": "Pop TV",
     "slug": "poptv-app",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon-pop.png",
     "userInterfaceStyle": "dark",
