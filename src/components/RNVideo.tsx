@@ -100,7 +100,7 @@ export default function RNVideo() {
         <Video
           ref={video}
           source={{
-            uri: "https://rtisoluctions.com.br/hls/test.m3u8",
+            uri: "https://pop.tv.br/hls/test.m3u8",
           }}
           shouldPlay
           onLoadStart={() => setIsLoading(true)}
@@ -110,6 +110,12 @@ export default function RNVideo() {
           useNativeControls={false}
           resizeMode={ResizeMode.CONTAIN}
           isFullScreen={isFullscreen}
+          bufferConfig={{
+            minBufferMs: 15000,
+            maxBufferMs: 50000,
+            bufferForPlaybackMs: 2500,
+            bufferForPlaybackAfterRebufferMs: 5000,
+          }}
           style={{
             flex: 1,
             width: VIDEO_WIDTH,
