@@ -12,6 +12,7 @@ import * as ScreenOrientation from "expo-screen-orientation";
 import { Video as VideoComponent } from "expo-av";
 import { useKeepAwake } from "expo-keep-awake";
 import slidePop from "../../assets/slide-pop.png";
+import { Video as VideoProp } from "expo-av";
 
 const Video: any = require("expo-av").Video;
 
@@ -64,9 +65,7 @@ export default function VideoPlayer() {
     ScreenOrientation.unlockAsync();
   }, []);
 
-  const onFullscreenUpdate = async ({
-    fullscreenUpdate,
-  }: Video.FullscreenUpdateEvent) => {
+  const onFullscreenUpdate = async ({ fullscreenUpdate }: any) => {
     switch (fullscreenUpdate) {
       case Video.FULLSCREEN_UPDATE_PLAYER_WILL_PRESENT:
         await ScreenOrientation.lockAsync(

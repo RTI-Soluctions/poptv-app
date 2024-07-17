@@ -1,28 +1,46 @@
-import React, { useEffect, useState } from "react";
-import { View, Image, TouchableOpacity, ScrollView } from "react-native";
-import { Divisor } from "../components/Divisor";
-import { MainContainer } from "../components/MainContainer";
-import logoPop from "../../assets/logo-pop.png";
-import NetInfo from "@react-native-community/netinfo";
-import Toast from "react-native-toast-message";
-import useAppState from "react-native-appstate-hook";
 import { Navbar } from "../components/NavBar";
-import { useAppContext } from "../context/AppContext";
+import Toast from "react-native-toast-message";
+import { Divisor } from "../components/Divisor";
+import logoPop from "../../assets/logo-pop.png";
 import { AboutUs } from "../components/AboutUs";
 import { Contact } from "../components/Contact";
+import NetInfo from "@react-native-community/netinfo";
+import { useAppContext } from "../context/AppContext";
+import { MainContainer } from "../components/MainContainer";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  AppState,
+} from "react-native";
 
 export const Home = () => {
   const [key, setKey] = useState(0);
 
-  const { appState } = useAppState();
+  const appState = useRef(AppState.currentState);
 
   const { isHome, isAboutUs, isContact } = useAppContext();
 
   useEffect(() => {
-    if (appState === "active") {
+    const subscription = AppState.addEventListener("change", (nextAppState) => {
+      if (
+        appState.current.match(/inactive|background/) &&
+        nextAppState === "active"
+      ) {
+        console.log("App has come to the foreground!");
+      }
+
+      appState.current = nextAppState;
       setKey((prevKey) => prevKey + 1);
-    }
-  }, [appState]);
+      console.log("AppState", appState.current);
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
