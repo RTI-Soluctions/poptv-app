@@ -16,10 +16,10 @@ import slidePop from "../../assets/slide-pop.png";
 const Video: any = require("expo-av").Video;
 
 const VIDEO_HEIGHT = 202;
-const DEFAULT_IMAGE_HEIGHT = 202;
+const DEFAULT_IMAGE_HEIGHT = 192;
 const SCREEN_SPACE = 24;
 
-export default function RNVideo() {
+export default function VideoPlayer() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -64,18 +64,20 @@ export default function RNVideo() {
     ScreenOrientation.unlockAsync();
   }, []);
 
-  const onFullscreenUpdate = async () => {
-    const orientation = await ScreenOrientation.getOrientationAsync();
-
-    if (video.current) {
-      if (
-        orientation === ScreenOrientation.Orientation.LANDSCAPE_LEFT ||
-        orientation === ScreenOrientation.Orientation.LANDSCAPE_RIGHT
-      ) {
-        await video.current.presentFullscreenPlayer();
-      } else {
-        await video.current.dismissFullscreenPlayer();
-      }
+  const onFullscreenUpdate = async ({
+    fullscreenUpdate,
+  }: Video.FullscreenUpdateEvent) => {
+    switch (fullscreenUpdate) {
+      case Video.FULLSCREEN_UPDATE_PLAYER_WILL_PRESENT:
+        await ScreenOrientation.lockAsync(
+          ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
+        );
+        break;
+      case Video.FULLSCREEN_UPDATE_PLAYER_WILL_DISMISS:
+        await ScreenOrientation.lockAsync(
+          ScreenOrientation.OrientationLock.PORTRAIT
+        );
+        break;
     }
   };
 
@@ -86,7 +88,7 @@ export default function RNVideo() {
         style={{
           position: "absolute",
           width: VIDEO_WIDTH,
-          height: isLoading ? DEFAULT_IMAGE_HEIGHT : VIDEO_HEIGHT,
+          height: isLoading ? DEFAULT_IMAGE_HEIGHT : 0,
           borderRadius: 6,
           zIndex: isLoading ? 1 : -1,
         }}
@@ -107,7 +109,8 @@ export default function RNVideo() {
           onLoad={() => setIsLoading(false)}
           onFullscreenUpdate={onFullscreenUpdate}
           autoPlay
-          useNativeControls={false}
+          accessibilityLabel="Player exibindo a Pop TV de Sobradinho, Rio Grande do Sul Ao Vivo"
+          useNativeControls={true}
           resizeMode={ResizeMode.CONTAIN}
           isFullScreen={isFullscreen}
           bufferConfig={{
@@ -131,9 +134,12 @@ export default function RNVideo() {
 
 const styles = StyleSheet.create({
   container: {
+    width: "96%",
     flex: 1,
-    justifyContent: "center",
+    flexDirection: "column",
     alignItems: "center",
+    aspectRatio: 16 / 9,
+    borderRadius: 6,
   },
   heading: {
     fontSize: 20,

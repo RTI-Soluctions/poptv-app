@@ -1,13 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Image, TouchableOpacity, ScrollView } from "react-native";
 import { Divisor } from "../components/Divisor";
-import { PlayerContainer } from "../components/PlayerContainer";
+import { MainContainer } from "../components/MainContainer";
 import logoPop from "../../assets/logo-pop.png";
 import NetInfo from "@react-native-community/netinfo";
 import Toast from "react-native-toast-message";
+import useAppState from "react-native-appstate-hook";
+import { Navbar } from "../components/NavBar";
+import { useAppContext } from "../context/AppContext";
+import { AboutUs } from "../components/AboutUs";
+import { Contact } from "../components/Contact";
 
 export const Home = () => {
   const [key, setKey] = useState(0);
+
+  const { appState } = useAppState();
+
+  const { isHome, isAboutUs, isContact } = useAppContext();
+
+  useEffect(() => {
+    if (appState === "active") {
+      setKey((prevKey) => prevKey + 1);
+    }
+  }, [appState]);
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
@@ -33,21 +48,36 @@ export const Home = () => {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    NetInfo.fetch().then((state) => {
+      if (!state.isConnected) {
+        Toast.show({
+          type: "error",
+          position: "top",
+          text1: "Alerta de conexão",
+          text2: "Você está offline!",
+        });
+      }
+    });
+  }, []);
+
   return (
-    <View className="flex-1 bg-gray-800 flex-col items-center">
-      <View className="flex-2 flex-row pt-16 pb-2 justify-center items-center gap-4">
+    <View className="flex-1 bg-gray-900 flex-col items-center">
+      <View className="flex-2 flex-row pt-12 pb-2 justify-center items-center gap-4">
         <TouchableOpacity>
           <Image className="w-24 h-10" source={logoPop} />
         </TouchableOpacity>
+        <Toast visibilityTime={4000} autoHide={true} position="top" />
       </View>
-      <Toast visibilityTime={4000} autoHide={true} position="top" />
+      <Navbar />
       <Divisor />
-      <PlayerContainer key={key} />
-      <View className="bg-gray-900 flex-7 justify-center items-center p-4 absolute bottom-0 w-full">
-        <Text className="text-white font-thin text-sm bg-gray-900">
-          © 2024 Pop TV. Todos os direitos reservados.
-        </Text>
-      </View>
+      {isHome && (
+        <ScrollView className="flex-1 w-full ml-4">
+          <MainContainer key={key} />
+        </ScrollView>
+      )}
+      {isAboutUs && <AboutUs />}
+      {isContact && <Contact />}
     </View>
   );
 };

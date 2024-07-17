@@ -2,7 +2,7 @@
   "expo": {
     "name": "Pop TV",
     "slug": "poptv-app",
-    "version": "1.0.2",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon-pop.png",
     "userInterfaceStyle": "dark",
@@ -15,11 +15,9 @@
       "supportsTablet": true
     },
     "android": {
-      "permissions": [
-        "INTERNET"
-      ],
+      "permissions": ["INTERNET"],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon64-pop.png",
+        "foregroundImage": "./assets/icon32-pop.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.ormartins.poptvapp"
@@ -32,9 +30,7 @@
         "projectId": "c3347070-5c2d-48de-b8e1-67ac53e5e918"
       }
     },
-    "plugins": [
-      "expo-video"
-    ],
+    "plugins": ["expo-video"],
     "runtimeVersion": {
       "policy": "appVersion"
     },
