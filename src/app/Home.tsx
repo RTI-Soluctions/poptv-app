@@ -14,6 +14,7 @@ import {
   TouchableOpacity,
   ScrollView,
   AppState,
+  StatusBar,
 } from "react-native";
 
 export const Home = () => {
@@ -81,6 +82,7 @@ export const Home = () => {
 
   return (
     <View className="flex-1 bg-gray-900 flex-col items-center">
+      <StatusBar barStyle={"light-content"} />
       <View className="flex-2 flex-row pt-12 pb-2 justify-center items-center gap-4">
         <TouchableOpacity>
           <Image className="w-24 h-10" source={logoPop} />

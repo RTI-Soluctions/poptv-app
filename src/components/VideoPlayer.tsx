@@ -17,7 +17,7 @@ import { Video as VideoProp } from "expo-av";
 const Video: any = require("expo-av").Video;
 
 const VIDEO_HEIGHT = 202;
-const DEFAULT_IMAGE_HEIGHT = 192;
+const DEFAULT_IMAGE_HEIGHT = 202;
 const SCREEN_SPACE = 24;
 
 export default function VideoPlayer() {
@@ -87,7 +87,7 @@ export default function VideoPlayer() {
         style={{
           position: "absolute",
           width: VIDEO_WIDTH,
-          height: isLoading ? DEFAULT_IMAGE_HEIGHT : 0,
+          height: isLoading ? VIDEO_HEIGHT : 0,
           borderRadius: 6,
           zIndex: isLoading ? 1 : -1,
         }}
@@ -107,9 +107,12 @@ export default function VideoPlayer() {
           onLoadStart={() => setIsLoading(true)}
           onLoad={() => setIsLoading(false)}
           onFullscreenUpdate={onFullscreenUpdate}
+          backgroundImage={{
+            uri: "https://www.pop.tv.br/assets/slide-pop.png",
+          }}
           autoPlay
           accessibilityLabel="Player exibindo a Pop TV de Sobradinho, Rio Grande do Sul Ao Vivo"
-          useNativeControls={true}
+          useNativeControls={!isLoading}
           resizeMode={ResizeMode.CONTAIN}
           isFullScreen={isFullscreen}
           bufferConfig={{
