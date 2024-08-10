@@ -1,23 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
+  Alert,
+  AppState,
   Image,
   RefreshControl,
   ScrollView,
   StyleSheet,
+  ToastAndroid,
   useWindowDimensions,
   View,
 } from "react-native";
 import { ResizeMode } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
-import { Video as VideoComponent } from "expo-av";
+import {
+  Video as VideoComponent,
+  Audio,
+  InterruptionModeAndroid,
+  InterruptionModeIOS,
+} from "expo-av";
 import { useKeepAwake } from "expo-keep-awake";
 import slidePop from "../../assets/slide-pop.png";
-import { Video as VideoProp } from "expo-av";
+import { setAudioModeAsync } from "expo-av/build/Audio";
 
 const Video: any = require("expo-av").Video;
 
 const VIDEO_HEIGHT = 202;
-const DEFAULT_IMAGE_HEIGHT = 202;
 const SCREEN_SPACE = 24;
 
 export default function VideoPlayer() {
@@ -27,8 +34,70 @@ export default function VideoPlayer() {
   const [isLoading, setIsLoading] = useState(true);
   const [key, setKey] = useState(0);
   const { width } = useWindowDimensions();
-  const VIDEO_WIDTH = width - SCREEN_SPACE * 2;
   const video = useRef<VideoComponent>(null);
+
+  const VIDEO_WIDTH = width - SCREEN_SPACE * 2;
+
+  const appState = useRef(AppState.currentState);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener("change", (nextAppState) => {
+      if (
+        appState.current.match(/inactive|background/) &&
+        nextAppState === "active"
+      ) {
+        setAudioModeAsync({
+          staysActiveInBackground: true,
+          interruptionModeIOS: InterruptionModeIOS.DuckOthers,
+          interruptionModeAndroid: InterruptionModeAndroid.DuckOthers,
+        });
+        ToastAndroid.show("Bem-vindo de volta!", ToastAndroid.SHORT);
+      } else if (
+        appState.current === "active" &&
+        nextAppState.match(/inactive|background/)
+      ) {
+        setAudioModeAsync({
+          staysActiveInBackground: true,
+          interruptionModeIOS: InterruptionModeIOS.DoNotMix,
+          interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
+        });
+        ToastAndroid.show(
+          "A Pop TV continua reproduzindo em segundo plano!",
+          ToastAndroid.CENTER
+        );
+      }
+
+      appState.current = nextAppState;
+      setKey((prevKey) => prevKey + 1);
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   const subscription = AppState.addEventListener("change", (nextAppState) => {
+  //     if (
+  //       appState.current.match(/inactive|background/) &&
+  //       nextAppState === "active"
+  //     ) {
+  //       console.log("App has come to the foreground!");
+  //       InterruptionModeAndroid.DoNotMix;
+  //       InterruptionModeIOS.DoNotMix;
+  //     }
+
+  //     appState.current = nextAppState;
+  //     setKey((prevKey) => prevKey + 1);
+  //     console.log("AppState", appState.current);
+  //     InterruptionModeAndroid.DuckOthers;
+  //     InterruptionModeIOS.MixWithOthers;
+  //   });
+
+  //   return () => {
+  //     subscription.remove();
+  //   };
+  // }, []);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -104,6 +173,7 @@ export default function VideoPlayer() {
             uri: "https://pop.tv.br/hls/test.m3u8",
           }}
           shouldPlay
+          playInBackground={true}
           onLoadStart={() => setIsLoading(true)}
           onLoad={() => setIsLoading(false)}
           onFullscreenUpdate={onFullscreenUpdate}

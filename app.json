@@ -13,29 +13,28 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ormartins.poptvapp"
+      "bundleIdentifier": "com.ormartins.poptvapp",
+      "infoPlist": {
+        "UIBackgroundModes": ["audio"]
+      }
     },
     "android": {
-      "permissions": [
-        "INTERNET"
-      ],
+      "permissions": ["INTERNET"],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon32-pop.png",
+        "foregroundImage": "./assets/icon-pop.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.ormartins.poptvapp"
     },
     "web": {
-      "favicon": "./assets/favicon/favicon-pop.png"
+      "favicon": "./assets/favicon/icon-pop.png"
     },
     "extra": {
       "eas": {
         "projectId": "c3347070-5c2d-48de-b8e1-67ac53e5e918"
       }
     },
-    "plugins": [
-      "expo-video"
-    ],
+    "plugins": ["expo-video"],
     "runtimeVersion": {
       "policy": "appVersion"
     },
