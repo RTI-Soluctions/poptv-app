@@ -2,7 +2,7 @@
   "expo": {
     "name": "Pop TV",
     "slug": "poptv-app",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon-pop.png",
     "userInterfaceStyle": "dark",
@@ -27,7 +27,7 @@
       "package": "com.ormartins.poptvapp"
     },
     "web": {
-      "favicon": "./assets/favicon/icon-pop.png"
+      "favicon": "./assets/icon-pop.png"
     },
     "extra": {
       "eas": {

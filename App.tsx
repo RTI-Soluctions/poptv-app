@@ -7,7 +7,7 @@ export default function App() {
   return (
     <MyContextProvider>
       <Home />
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </MyContextProvider>
   );
 }

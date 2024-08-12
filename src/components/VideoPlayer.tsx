@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
-  Alert,
   AppState,
   Image,
   RefreshControl,
@@ -14,7 +13,6 @@ import { ResizeMode } from "expo-av";
 import * as ScreenOrientation from "expo-screen-orientation";
 import {
   Video as VideoComponent,
-  Audio,
   InterruptionModeAndroid,
   InterruptionModeIOS,
 } from "expo-av";
@@ -63,7 +61,7 @@ export default function VideoPlayer() {
         });
         ToastAndroid.show(
           "A Pop TV continua reproduzindo em segundo plano!",
-          ToastAndroid.CENTER
+          ToastAndroid.SHORT
         );
       }
 
@@ -75,29 +73,6 @@ export default function VideoPlayer() {
       subscription.remove();
     };
   }, []);
-
-  // useEffect(() => {
-  //   const subscription = AppState.addEventListener("change", (nextAppState) => {
-  //     if (
-  //       appState.current.match(/inactive|background/) &&
-  //       nextAppState === "active"
-  //     ) {
-  //       console.log("App has come to the foreground!");
-  //       InterruptionModeAndroid.DoNotMix;
-  //       InterruptionModeIOS.DoNotMix;
-  //     }
-
-  //     appState.current = nextAppState;
-  //     setKey((prevKey) => prevKey + 1);
-  //     console.log("AppState", appState.current);
-  //     InterruptionModeAndroid.DuckOthers;
-  //     InterruptionModeIOS.MixWithOthers;
-  //   });
-
-  //   return () => {
-  //     subscription.remove();
-  //   };
-  // }, []);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -156,7 +131,7 @@ export default function VideoPlayer() {
         style={{
           position: "absolute",
           width: VIDEO_WIDTH,
-          height: isLoading ? VIDEO_HEIGHT : 0,
+          height: isLoading ? width/1.9 : 0,
           borderRadius: 6,
           zIndex: isLoading ? 1 : -1,
         }}
@@ -173,6 +148,7 @@ export default function VideoPlayer() {
             uri: "https://pop.tv.br/hls/test.m3u8",
           }}
           shouldPlay
+          accessibilityLabel="Player exibindo a Pop TV de Sobradinho, Rio Grande do Sul Ao Vivo."
           playInBackground={true}
           onLoadStart={() => setIsLoading(true)}
           onLoad={() => setIsLoading(false)}
@@ -180,9 +156,7 @@ export default function VideoPlayer() {
           backgroundImage={{
             uri: "https://www.pop.tv.br/assets/slide-pop.png",
           }}
-          autoPlay
-          accessibilityLabel="Player exibindo a Pop TV de Sobradinho, Rio Grande do Sul Ao Vivo"
-          useNativeControls={!isLoading}
+          useNativeControls={true}
           resizeMode={ResizeMode.CONTAIN}
           isFullScreen={isFullscreen}
           bufferConfig={{

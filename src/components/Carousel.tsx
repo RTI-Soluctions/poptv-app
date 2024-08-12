@@ -7,11 +7,18 @@ import { ChannelItem } from "./ChanelsItem";
 export const CarouselComponent = () => {
   const width = Dimensions.get("window").width;
   return (
-    <View className="bg-gray-900 w-full flex items-center mb-[-20px] ">
+    <View className="bg-gray-900 w-full flex flex-col justify-center items-center mb-[-20px] ">
       <Carousel
         loop
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          
+        }}
         width={width}
-        height={width / 2}
+        height={200}
         autoPlay={true}
         data={channels}
         scrollAnimationDuration={2000}
