@@ -131,7 +131,7 @@ export default function VideoPlayer() {
         style={{
           position: "absolute",
           width: VIDEO_WIDTH,
-          height: isLoading ? width/1.9 : 0,
+          height: isLoading ? width / 1.9 : 0,
           borderRadius: 6,
           zIndex: isLoading ? 1 : -1,
         }}

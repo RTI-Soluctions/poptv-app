@@ -18,7 +18,7 @@ const ContactItem: React.FC<{ contact: IContact }> = ({ contact }) => (
 
 export const Contact = () => {
   return (
-    <StyledSafeAreaView className="flex-1 bg-gray-900 p-4 mb-16 w-[90%]">
+    <StyledSafeAreaView className="flex-1 bg-gray-900 p-4 mt-6 mb-16 w-[90%]">
       <FlatList
         data={contacts}
         keyExtractor={(item) => item.email}

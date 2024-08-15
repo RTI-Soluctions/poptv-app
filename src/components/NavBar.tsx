@@ -1,4 +1,3 @@
-import { styled } from "nativewind";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useAppContext } from "../context/AppContext";
 

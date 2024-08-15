@@ -15,7 +15,6 @@ export const CarouselComponent = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          
         }}
         width={width}
         height={200}

@@ -11,9 +11,11 @@
   "dependencies": {
     "@react-native-community/netinfo": "11.3.1",
     "axios": "^1.7.2",
+    "burnt": "^0.12.2",
     "expo": "~51.0.26",
     "expo-application": "~5.9.1",
     "expo-av": "~14.0.6",
+    "expo-build-properties": "~0.12.5",
     "expo-keep-awake": "~13.0.2",
     "expo-screen-orientation": "~7.0.5",
     "expo-status-bar": "~1.12.1",
@@ -25,6 +27,7 @@
     "react-native-gesture-handler": "~2.16.1",
     "react-native-reanimated": "~3.10.1",
     "react-native-reanimated-carousel": "^3.5.1",
+    "react-native-system-setting": "^1.7.6",
     "react-native-toast-message": "^2.2.0",
     "react-native-video": "^6.3.0",
     "react-native-webview": "13.8.6"
