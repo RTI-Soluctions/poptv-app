@@ -2,7 +2,7 @@
   "build": {
     "preview": {
       "android": {
-        "buildType": "app-bundle"
+        "buildType": "apk"
       }
     },
     "preview2": {
@@ -16,7 +16,18 @@
     "preview4": {
       "distribution": "internal"
     },
-    "production": {}
+    "production": {
+      "android": {
+        "buildType": "app-bundle",
+        "distribution": "store",
+        "version": "1.0.5"
+      },
+      "ios": {
+        "buildType": "archive",
+        "distribution": "store",
+        "version": "1.0.5"
+      }
+    }
   },
   "cli": {
     "appVersionSource": "remote"
