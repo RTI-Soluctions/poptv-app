@@ -105,6 +105,7 @@ export default function VideoPlayer() {
           video.current?.presentFullscreenPlayer();
         } else {
           video.current?.dismissFullscreenPlayer();
+          video.current?.playAsync();
         }
       }
     );
