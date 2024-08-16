@@ -7,5 +7,5 @@ export const contacts: IContact[] = [
     {
       department: 'Atendimento ao Espectador',
       email: 'contato@pop.tv.br',
-    }
+    },
   ];

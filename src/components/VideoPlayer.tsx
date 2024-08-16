@@ -5,7 +5,6 @@ import {
   RefreshControl,
   ScrollView,
   StyleSheet,
-  ToastAndroid,
   useWindowDimensions,
   View,
 } from "react-native";
@@ -19,6 +18,7 @@ import {
 import { useKeepAwake } from "expo-keep-awake";
 import slidePop from "../../assets/slide-pop.png";
 import { setAudioModeAsync } from "expo-av/build/Audio";
+import * as Burnt from "burnt";
 
 const Video: any = require("expo-av").Video;
 
@@ -49,7 +49,13 @@ export default function VideoPlayer() {
           interruptionModeIOS: InterruptionModeIOS.DuckOthers,
           interruptionModeAndroid: InterruptionModeAndroid.DuckOthers,
         });
-        ToastAndroid.show("Bem-vindo de volta!", ToastAndroid.SHORT);
+        video.current?.playAsync();
+        Burnt.toast({
+          duration: 0.2,
+          haptic: "success",
+          title: "Bem vindo de volta!",
+          from: "bottom",
+        });
       } else if (
         appState.current === "active" &&
         nextAppState.match(/inactive|background/)
@@ -59,10 +65,13 @@ export default function VideoPlayer() {
           interruptionModeIOS: InterruptionModeIOS.DoNotMix,
           interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
         });
-        ToastAndroid.show(
-          "A Pop TV continua reproduzindo em segundo plano!",
-          ToastAndroid.SHORT
-        );
+        video.current?.playAsync();
+        Burnt.toast({
+          duration: 0.2,
+          haptic: "success",
+          title: "A Pop TV continua executando em segundo plano!",
+          from: "bottom",
+        });
       }
 
       appState.current = nextAppState;
@@ -147,7 +156,8 @@ export default function VideoPlayer() {
           source={{
             uri: "https://pop.tv.br/hls/test.m3u8",
           }}
-          shouldPlay
+          shouldPlay={true}
+          autoPlay={true}
           accessibilityLabel="Player exibindo a Pop TV de Sobradinho, Rio Grande do Sul Ao Vivo."
           playInBackground={true}
           onLoadStart={() => setIsLoading(true)}

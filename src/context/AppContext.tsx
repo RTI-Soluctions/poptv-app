@@ -1,6 +1,5 @@
 import React, { createContext, useState, ReactNode, useContext } from "react";
 
-// Tipos para o estado e funções do contexto
 interface MyContextType {
   state: string | null;
   updateState: (newState: string) => void;
@@ -12,15 +11,12 @@ interface MyContextType {
   setIsContact: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-// Criação do contexto com tipos
 const MyContext = createContext<MyContextType | undefined>(undefined);
 
-// Tipagem para as props do provedor de contexto
 interface MyContextProviderProps {
   children: ReactNode;
 }
 
-// Criação do provedor de contexto com tipos
 export const MyContextProvider = ({ children }: MyContextProviderProps) => {
   const [isHome, setIsHome] = React.useState(true);
   const [isAboutUs, setIsAboutUs] = React.useState(false);
