@@ -12,6 +12,7 @@
       "backgroundColor": "#111827"
     },
     "ios": {
+      "supportsTablet": true,
       "bundleIdentifier": "com.ormartins.poptvapp",
       "infoPlist": {
         "UIBackgroundModes": ["audio"]
