@@ -48,12 +48,13 @@ export default function VideoPlayer() {
           staysActiveInBackground: true,
           interruptionModeIOS: InterruptionModeIOS.DuckOthers,
           interruptionModeAndroid: InterruptionModeAndroid.DuckOthers,
+          playsInSilentModeIOS: true,
         });
         video.current?.playAsync();
         Burnt.toast({
           duration: 0.2,
           haptic: "success",
-          title: "Bem vindo de volta!",
+          title: "Bem vindo(a) de volta!",
           from: "bottom",
         });
       } else if (
@@ -61,9 +62,10 @@ export default function VideoPlayer() {
         nextAppState.match(/inactive|background/)
       ) {
         setAudioModeAsync({
-          staysActiveInBackground: true,
-          interruptionModeIOS: InterruptionModeIOS.DoNotMix,
           interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
+          interruptionModeIOS: InterruptionModeIOS.DoNotMix,
+          staysActiveInBackground: true,
+          playsInSilentModeIOS: true,
         });
         video.current?.playAsync();
         Burnt.toast({
