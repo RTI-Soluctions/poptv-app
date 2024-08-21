@@ -45,9 +45,10 @@ export default function VideoPlayer() {
         nextAppState === "active"
       ) {
         setAudioModeAsync({
-          staysActiveInBackground: true,
           interruptionModeIOS: InterruptionModeIOS.DuckOthers,
           interruptionModeAndroid: InterruptionModeAndroid.DuckOthers,
+          staysActiveInBackground: true,
+          playsInSilentModeIOS: true,
         });
         video.current?.playAsync();
         Burnt.toast({
@@ -61,9 +62,10 @@ export default function VideoPlayer() {
         nextAppState.match(/inactive|background/)
       ) {
         setAudioModeAsync({
-          staysActiveInBackground: true,
           interruptionModeIOS: InterruptionModeIOS.DoNotMix,
           interruptionModeAndroid: InterruptionModeAndroid.DoNotMix,
+          staysActiveInBackground: true,
+          playsInSilentModeIOS: true,
         });
         video.current?.playAsync();
         Burnt.toast({
@@ -103,6 +105,7 @@ export default function VideoPlayer() {
             ScreenOrientation.Orientation.LANDSCAPE_RIGHT
         ) {
           video.current?.presentFullscreenPlayer();
+          video.current?.playAsync();
         } else {
           video.current?.dismissFullscreenPlayer();
           video.current?.playAsync();
@@ -118,21 +121,6 @@ export default function VideoPlayer() {
   useEffect(() => {
     ScreenOrientation.unlockAsync();
   }, []);
-
-  const onFullscreenUpdate = async ({ fullscreenUpdate }: any) => {
-    switch (fullscreenUpdate) {
-      case Video.FULLSCREEN_UPDATE_PLAYER_WILL_PRESENT:
-        await ScreenOrientation.lockAsync(
-          ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
-        );
-        break;
-      case Video.FULLSCREEN_UPDATE_PLAYER_WILL_DISMISS:
-        await ScreenOrientation.lockAsync(
-          ScreenOrientation.OrientationLock.PORTRAIT
-        );
-        break;
-    }
-  };
 
   return (
     <View style={styles.container}>
@@ -163,7 +151,7 @@ export default function VideoPlayer() {
           playInBackground={true}
           onLoadStart={() => setIsLoading(true)}
           onLoad={() => setIsLoading(false)}
-          onFullscreenUpdate={onFullscreenUpdate}
+          // onFullscreenUpdate={onFullscreenUpdate}
           backgroundImage={{
             uri: "https://www.pop.tv.br/assets/slide-pop.png",
           }}
