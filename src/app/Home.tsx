@@ -3,23 +3,23 @@ import logoPop from "../../assets/logo-pop.png";
 import { Navbar } from "../components/NavBar";
 import { Divisor } from "../components/Divisor";
 import { AboutUs } from "../components/AboutUs";
-import { Contact } from "../components/Contact";
 import { useAppContext } from "../context/AppContext";
 import React, { useEffect, useState } from "react";
 import { MainContainer } from "../components/MainContainer";
 import { View, Image, TouchableOpacity, ScrollView } from "react-native";
 import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
 import * as Burnt from "burnt";
+import { Programation } from "../components/Programation";
 
 export const Home = () => {
   const [key, setKey] = useState(0);
-  const { isHome, isAboutUs, isContact } = useAppContext();
+  const { isHome, isAboutUs, isPrograms } = useAppContext();
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
       if (state.type === "cellular") {
         Burnt.toast({
-          duration: 0.2,
+          duration: 1,
           haptic: "error",
           title: "Você está usando dados móveis!",
           from: "bottom",
@@ -28,8 +28,8 @@ export const Home = () => {
         setKey((prevKey) => prevKey + 1);
       } else if (state.type === "wifi") {
         Burnt.toast({
-          duration: 0.2,
-          haptic: "success",
+          duration: 1,
+          haptic: "error",
           title: "Você está conectado a uma rede wifi!",
           from: "bottom",
         });
@@ -39,8 +39,8 @@ export const Home = () => {
     NetInfo.fetch().then((state: NetInfoState) => {
       if (!state.isConnected) {
         Burnt.toast({
-          duration: 2,
-          haptic: "warning",
+          duration: 1,
+          haptic: "error",
           title: "Você está offline!",
           from: "bottom",
         });
@@ -65,8 +65,8 @@ export const Home = () => {
           <MainContainer key={key} />
         </ScrollView>
       )}
+      {isPrograms && <Programation />}
       {isAboutUs && <AboutUs />}
-      {isContact && <Contact />}
     </View>
   );
 };

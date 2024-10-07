@@ -7,8 +7,8 @@ interface MyContextType {
   setIsHome: React.Dispatch<React.SetStateAction<boolean>>;
   isAboutUs: boolean;
   setIsAboutUs: React.Dispatch<React.SetStateAction<boolean>>;
-  isContact: boolean;
-  setIsContact: React.Dispatch<React.SetStateAction<boolean>>;
+  isPrograms: boolean;
+  setIsPrograms: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const MyContext = createContext<MyContextType | undefined>(undefined);
@@ -20,7 +20,7 @@ interface MyContextProviderProps {
 export const MyContextProvider = ({ children }: MyContextProviderProps) => {
   const [isHome, setIsHome] = React.useState(true);
   const [isAboutUs, setIsAboutUs] = React.useState(false);
-  const [isContact, setIsContact] = React.useState(false);
+  const [isPrograms, setIsPrograms] = React.useState(false);
   const [state, setState] = useState<string | null>(null);
 
   const updateState = (newState: string) => {
@@ -36,8 +36,8 @@ export const MyContextProvider = ({ children }: MyContextProviderProps) => {
         setIsHome,
         isAboutUs,
         setIsAboutUs,
-        isContact,
-        setIsContact,
+        isPrograms,
+        setIsPrograms,
       }}
     >
       {children}
