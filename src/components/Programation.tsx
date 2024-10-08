@@ -8,6 +8,27 @@ import {
 } from "react-native";
 import { Programs } from "../database/programs_db";
 
+const numberToDay = (num: number) => {
+  switch (num) {
+    case 1:
+      return "Seg";
+    case 2:
+      return "Ter";
+    case 3:
+      return "Qua";
+    case 4:
+      return "Qui";
+    case 5:
+      return "Sex";
+    case 6:
+      return "Sab";
+    case 7:
+      return "Dom";
+    default:
+      return "";
+  }
+};
+
 export const Programation = () => {
   return (
     <ScrollView className="flex-1 w-full">
@@ -35,7 +56,7 @@ export const Programation = () => {
                   key={index}
                   className=" flex-row h-full w-8 justify-center items-center text-center font-light text-xs text-white border border-gray-600 rounded-xl pt-[2px]"
                 >
-                  {day}
+                  {numberToDay(day)}
                 </Text>
               ))}
             </View>
