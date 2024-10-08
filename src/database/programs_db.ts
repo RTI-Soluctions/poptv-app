@@ -22,9 +22,10 @@ import SessaoRetro from "../../assets/programs/sessao-retro.png"
 import ManhaCrianca from "../../assets/programs/manha-crianca.png"
 import PrimeiraSessao from "../../assets/programs/primeira-sessao.png"
 import FestSeries from "../../assets/programs/fest-series.png"
-import Espiritualidade from "../../assets/programs/no-image.jpg"
-import Provocacao from "../../assets/programs/no-image.jpg"
+import Espiritualidade from "../../assets/programs/espiritualidade.png"
+import Provocacao from "../../assets/programs/provocacao.png"
 import ScoobyDoo from "../../assets/programs/hora-do-scoobydoo.png"
+
 
 
 export const Programs = [
