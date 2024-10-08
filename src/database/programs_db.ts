@@ -14,7 +14,17 @@ import EmDestalhes from "../../assets/programs/em-detalhes.jpeg"
 import Mercados from "../../assets/programs/icl-mercados.jpeg"
 import Role from "../../assets/programs/role-icl.jpeg"
 import BemMelhor from "../../assets/programs/bem-melhor.jpg"
-import Petlovers from "../../assets/programs/no-image.jpg"
+import Petlovers from "../../assets/programs/pet-lovers-cast.png"
+import ICLNoticiasNoite from "../../assets/programs/icl-noticias.jpg"
+import ChicoEntrevista from "../../assets/programs/chico-entrevista.png"
+import Matine from "../../assets/programs/matine-pop-tv.png"
+import SessaoRetro from "../../assets/programs/sessao-retro.png"
+import ManhaCrianca from "../../assets/programs/manha-crianca.png"
+import PrimeiraSessao from "../../assets/programs/primeira-sessao.png"
+import FestSeries from "../../assets/programs/fest-series.png"
+import Espiritualidade from "../../assets/programs/no-image.jpg"
+import Provocacao from "../../assets/programs/no-image.jpg"
+import ScoobyDoo from "../../assets/programs/hora-do-scoobydoo.png"
 
 
 export const Programs = [
@@ -79,24 +89,88 @@ export const Programs = [
     end: "14:00",
     days: ["Seg", "Ter", "Qua", "Qui", "Sex", ],
     name: "Pet Lovers Cast",
-    image: BemMelhor,
+    image: Petlovers,
     description:"",
   },
   {
     start: "14:00",
     end: "16:00",
-    days: ["Seg", "Ter", "Qua", "Qui", "Sex", ],
+    days: ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab" ],
     name: "Matinê Pop TV",
-    image: BemMelhor,
-    description:"",
+    image: Matine,
+    description:"Melhores Filmes que marcaram época, grandes clássicos do cinema, comédias, aventuras, musicais, romances e muito mais!",
   },
   {
     start: "16:00",
-    end: "17:45",
+    end: "17:30",
     days: ["Seg", "Ter", "Qua", "Qui", "Sex", ],
     name: "Sessão Retrô",
-    image: BemMelhor,
-    description:"",
+    image: SessaoRetro,
+    description:"A Sessão Retrô é uma faixa que apresenta séries atuais e clássicas que marcaram época na TV.",
+  },
+  {
+    start: "18:00",
+    end: "19:30",
+    days: ["Seg", "Ter", "Qua", "Qui", "Sex"],
+    name: "ICL Notícias Noite",
+    image: ICLNoticiasNoite,
+    description:"Texto",
+  },
+  {
+    start: "20:00",
+    end: "21:00",
+    days: ["Seg"],
+    name: "Chico Pinheiro Entrevista",
+    image: ChicoEntrevista,
+    description:"Texto",
+  },
+  {
+    start: "19:30",
+    end: "20:00",
+    days: ["Ter"],
+    name: "Espiritualidade Na Ação",
+    image: Espiritualidade,
+    description:"Texto",
+  },
+  {
+    start: "19:30",
+    end: "20:30",
+    days: ["Qua"],
+    name: "Provocação Histórica",
+    image: Provocacao,
+    description:"Texto",
+  },
+  {
+    start: "08:00",
+    end: "10:30",
+    days: ["Sab"],
+    name: "Manhã Criança",
+    image: ManhaCrianca,
+    description:"Texto",
+  },
+  {
+    start: "06:00",
+    end: "06:30",
+    days: ["Ter", "Sex"],
+    name: "Hora do Scooby-Doo",
+    image: ScoobyDoo,
+    description:"Texto",
+  },
+  {
+    start: "10:30",
+    end: "12:00",
+    days: ["Sab"],
+    name: "Cinema - Primeira Sessão",
+    image: PrimeiraSessao,
+    description:"Texto",
+  },
+  {
+    start: "18:00",
+    end: "20:45",
+    days: ["Sab", "Dom"],
+    name: "Fest Series",
+    image: FestSeries,
+    description:"Texto",
   },
 
 ];
