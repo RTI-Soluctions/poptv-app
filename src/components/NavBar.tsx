@@ -1,36 +1,42 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import {
+  ScrollViewComponent,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useAppContext } from "../context/AppContext";
 
 export const Navbar = () => {
   const {
     isHome,
     isAboutUs,
-    isContact,
+    isPrograms,
     setIsHome,
     setIsAboutUs,
-    setIsContact,
+    setIsPrograms,
   } = useAppContext();
 
   const handleHome = () => {
     setIsHome(true);
     setIsAboutUs(false);
-    setIsContact(false);
+    setIsPrograms(false);
   };
 
-  const handleAboutUs = () => {
+  const handlePrograms = () => {
     setIsHome(false);
-    setIsAboutUs(true);
-    setIsContact(false);
-  };
-
-  const handleContact = () => {
-    setIsHome(false);
+    setIsPrograms(true);
     setIsAboutUs(false);
-    setIsContact(true);
+  };
+
+  const handleAbout = () => {
+    setIsHome(false);
+    setIsPrograms(false);
+    setIsAboutUs(true);
   };
 
   return (
-    <>
+    <React.Fragment>
       <View className="flex-row justify-center gap-x-4 bg-gray-900 w-full">
         <TouchableOpacity onPress={handleHome} className="p-1 ">
           <Text
@@ -43,7 +49,18 @@ export const Navbar = () => {
             Home
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleAboutUs} className="p-1 ">
+        <TouchableOpacity onPress={handlePrograms} className="p-1 ">
+          <Text
+            className="text-sm text-gray-100"
+            style={{
+              fontWeight: isPrograms ? "bold" : "normal",
+              color: isPrograms ? "white" : "gray",
+            }}
+          >
+            Programas
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleAbout} className="p-1 ">
           <Text
             className="text-sm text-gray-100"
             style={{
@@ -54,18 +71,7 @@ export const Navbar = () => {
             Sobre
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleContact} className="p-1 ">
-          <Text
-            className="text-sm text-gray-100"
-            style={{
-              fontWeight: isContact ? "bold" : "normal",
-              color: isContact ? "white" : "gray",
-            }}
-          >
-            Contato
-          </Text>
-        </TouchableOpacity>
       </View>
-    </>
+    </React.Fragment>
   );
 };

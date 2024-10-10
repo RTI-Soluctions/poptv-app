@@ -52,8 +52,8 @@ export default function VideoPlayer() {
         });
         video.current?.playAsync();
         Burnt.toast({
-          duration: 0.2,
-          haptic: "success",
+          duration: 1,
+          haptic: "error",
           title: "Bem vindo(a) de volta!",
           from: "bottom",
         });
@@ -69,8 +69,8 @@ export default function VideoPlayer() {
         });
         video.current?.playAsync();
         Burnt.toast({
-          duration: 0.2,
-          haptic: "success",
+          duration: 1,
+          haptic: "error",
           title: "A Pop TV continua executando em segundo plano!",
           from: "bottom",
         });
