@@ -282,5 +282,12 @@ export const Epgs = [
     name: "Compilação Clipes",
     description: "Sem informações",
   },
+  {
+    start: "17:30",
+    end: "18:00",
+    days: [1, 2, 3, 4, 5],
+    name: "Compilação Clipes",
+    description: "Sem informações",
+  },
 
 ];

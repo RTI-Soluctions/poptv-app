@@ -7,6 +7,7 @@ import {
   View,
 } from "react-native";
 import { Programs } from "../database/programs_db";
+import { Footer } from "./Footer";
 
 const numberToDay = (num: number) => {
   switch (num) {
@@ -32,7 +33,7 @@ const numberToDay = (num: number) => {
 export const Programation = () => {
   return (
     <ScrollView className="flex-1 w-full">
-      <View className="flex items-center mt-2">
+      <View className="flex items-center mt-2 mb-16">
         {Programs.map((program, index) => (
           <View
             key={index}
@@ -40,7 +41,7 @@ export const Programation = () => {
           >
             <Image
               source={program.image as ImageSourcePropType}
-              className="w-full h-40 object-cover rounded mb-[-8px]"
+              className="w-full h-40 object-fill rounded mb-[-8px] "
             />
             <View className="flex-row justify-between ">
               <Text className="font-bold text-xl text-left pt-5 text-white">
@@ -63,6 +64,7 @@ export const Programation = () => {
           </View>
         ))}
       </View>
+      <Footer />
     </ScrollView>
   );
 };

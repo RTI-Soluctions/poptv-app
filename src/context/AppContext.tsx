@@ -9,6 +9,8 @@ interface MyContextType {
   setIsAboutUs: React.Dispatch<React.SetStateAction<boolean>>;
   isPrograms: boolean;
   setIsPrograms: React.Dispatch<React.SetStateAction<boolean>>;
+  isModalOpen: boolean;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const MyContext = createContext<MyContextType | undefined>(undefined);
@@ -21,6 +23,7 @@ export const MyContextProvider = ({ children }: MyContextProviderProps) => {
   const [isHome, setIsHome] = React.useState(true);
   const [isAboutUs, setIsAboutUs] = React.useState(false);
   const [isPrograms, setIsPrograms] = React.useState(false);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [state, setState] = useState<string | null>(null);
 
   const updateState = (newState: string) => {
@@ -38,6 +41,8 @@ export const MyContextProvider = ({ children }: MyContextProviderProps) => {
         setIsAboutUs,
         isPrograms,
         setIsPrograms,
+        isModalOpen,
+        setIsModalOpen,
       }}
     >
       {children}

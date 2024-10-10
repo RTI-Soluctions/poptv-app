@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { Divisor } from "./Divisor";
 import VideoPlayer from "./VideoPlayer";
 import { Now } from "./Now";
+import { Footer } from "./Footer";
 
 export const MainContainer = () => {
   return (

@@ -11,8 +11,6 @@ const checkCurrentProgram = () => {
     now.getMinutes().toString().padStart(2, "0");
   const currentDay = now.getUTCDay();
 
-  // console.log(currentTime, currentDay);
-
   return Epgs.find((program) => {
     return (
       program.days.includes(currentDay) &&

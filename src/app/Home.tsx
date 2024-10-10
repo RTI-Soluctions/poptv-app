@@ -10,6 +10,7 @@ import { View, Image, TouchableOpacity, ScrollView } from "react-native";
 import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
 import * as Burnt from "burnt";
 import { Programation } from "../components/Programation";
+import { Footer } from "../components/Footer";
 
 export const Home = () => {
   const [key, setKey] = useState(0);
@@ -51,22 +52,25 @@ export const Home = () => {
   }, []);
 
   return (
-    <View className="flex-1 bg-gray-900 flex-col items-center">
-      <View className="flex-2 flex-row pt-12 pb-2 justify-center items-center gap-4">
-        <TouchableOpacity>
-          <Image className="w-24 h-10" source={logoPop} />
-        </TouchableOpacity>
-        <Toast visibilityTime={4000} autoHide={true} position="top" />
+    <React.Fragment>
+      <View className="flex-1 bg-gray-900 flex-col items-center">
+        <View className="flex-2 flex-row pt-12 pb-2 justify-center items-center gap-4">
+          <TouchableOpacity>
+            <Image className="w-24 h-10" source={logoPop} />
+          </TouchableOpacity>
+          <Toast visibilityTime={4000} autoHide={true} position="top" />
+        </View>
+        <Navbar />
+        <Divisor />
+        {isHome && (
+          <ScrollView className="flex-1 w-full ml-4">
+            <MainContainer key={key} />
+          </ScrollView>
+        )}
+        {isPrograms && <Programation />}
+        {isAboutUs && <AboutUs />}
       </View>
-      <Navbar />
-      <Divisor />
-      {isHome && (
-        <ScrollView className="flex-1 w-full ml-4">
-          <MainContainer key={key} />
-        </ScrollView>
-      )}
-      {isPrograms && <Programation />}
-      {isAboutUs && <AboutUs />}
-    </View>
+      <Footer />
+    </React.Fragment>
   );
 };
