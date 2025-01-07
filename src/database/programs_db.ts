@@ -10,7 +10,7 @@ export type Program = {
 import Compilacao from "../../assets/programs/compilacao-clipes.png"
 import Desperta from "../../assets/programs/desperta-icl.jpeg"
 import ICLNoticias1 from "../../assets/programs/icl-noticias-1.jpeg"
-import EmDestalhes from "../../assets/programs/em-detalhes.jpeg"
+import EmDetalhes from "../../assets/programs/em-detalhes.jpeg"
 import Mercados from "../../assets/programs/icl-mercados.jpeg"
 import Role from "../../assets/programs/role-icl.jpeg"
 import BemMelhor from "../../assets/programs/bem-melhor.jpg"
@@ -50,8 +50,8 @@ export const Programs = [
     start: "10:00",
     end: "11:00",
     days: [1, 2, 3, 4, 5],
-    name: "Em Destalhes",
-    image: EmDestalhes,
+    name: "Em Detalhes",
+    image: EmDetalhes,
     description:"Texto",
   },
   {

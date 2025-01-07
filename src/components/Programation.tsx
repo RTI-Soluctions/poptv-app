@@ -43,7 +43,7 @@ export const Programation = () => {
               source={program.image as ImageSourcePropType}
               className="w-full h-40 object-fill rounded mb-[-8px] "
             />
-            <View className="flex-row justify-between ">
+            <View className="flex-row justify-between items-center ">
               <Text className="font-bold text-xl text-left pt-5 text-white">
                 {program.name}
               </Text>

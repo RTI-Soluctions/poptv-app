@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 
 import { Epg, Epgs } from "../database/epg_db";
+import { useAppContext } from "../context/AppContext";
 
 const checkCurrentProgram = () => {
+
   const now = new Date();
   const currentTime =
     now.getHours().toString().padStart(2, "0") +
@@ -23,6 +25,8 @@ const checkCurrentProgram = () => {
 export const Now = () => {
   const [program, setProgram] = useState({} as Epg);
 
+  const { dayList } = useAppContext();
+
   useEffect(() => {
     const interval = setInterval(() => {
       const currentProgram = checkCurrentProgram();
@@ -33,7 +37,7 @@ export const Now = () => {
           start: `${new Date().getHours()}:00`,
           end: `${new Date().getHours() + 1}:00`,
           days: [0],
-          name: "Programação Pop TV - Reprise",
+          name: "Programação Pop TV",
           description: "Sem informações",
         } as Epg);
       }
@@ -46,7 +50,7 @@ export const Now = () => {
     <View className="flex-col justify-center items-center bg-gray-900 pt-4 w-full">
       {program && (
         <>
-          <Text className="text-left text-2xl font-semibold w-[90%] text-gray-50">
+          <Text className="text-left text-xl font-semibold w-[90%] text-gray-50">
             {program.name}
           </Text>
           <Text className="text-left text-base font-light w-[90%] text-gray-300">

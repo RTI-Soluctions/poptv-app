@@ -1,4 +1,5 @@
 import React, { createContext, useState, ReactNode, useContext } from "react";
+import { Epg, Epgs } from "../database/epg_db";
 
 interface MyContextType {
   state: string | null;
@@ -11,6 +12,8 @@ interface MyContextType {
   setIsPrograms: React.Dispatch<React.SetStateAction<boolean>>;
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  dayList: Epg[];
+  setDayList: React.Dispatch<React.SetStateAction<Epg[]>>;
 }
 
 const MyContext = createContext<MyContextType | undefined>(undefined);
@@ -25,6 +28,15 @@ export const MyContextProvider = ({ children }: MyContextProviderProps) => {
   const [isPrograms, setIsPrograms] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [state, setState] = useState<string | null>(null);
+  const [dayList, setDayList] = React.useState<Epg[]>([]);
+
+  const getDaylist = () => {
+    const getList = Epgs.filter((epg) => {
+      return epg.days.includes(new Date().getDay());
+    });
+
+    setDayList(getList);
+  };
 
   const updateState = (newState: string) => {
     setState(newState);
@@ -43,6 +55,8 @@ export const MyContextProvider = ({ children }: MyContextProviderProps) => {
         setIsPrograms,
         isModalOpen,
         setIsModalOpen,
+        dayList,
+        setDayList,
       }}
     >
       {children}

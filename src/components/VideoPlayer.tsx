@@ -166,9 +166,6 @@ export default function VideoPlayer() {
           onLoadStart={() => setIsLoading(true)}
           onLoad={() => setIsLoading(false)}
           onFullscreenUpdate={onFullscreenUpdate}
-          backgroundImage={{
-            uri: "https://www.pop.tv.br/assets/slide-pop.png",
-          }}
           useNativeControls={true}
           resizeMode={ResizeMode.CONTAIN}
           isFullScreen={isFullscreen}

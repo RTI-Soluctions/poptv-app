@@ -11,7 +11,7 @@ export const MainContainer = () => {
       <Text className="text-center text-xl font-bold text-white ">Ao Vivo</Text>
       <VideoPlayer />
       <Divisor />
-      <Now />
+      {/* <Now /> */}
     </View>
   );
 };
