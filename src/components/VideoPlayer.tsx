@@ -157,7 +157,7 @@ export default function VideoPlayer() {
         <Video
           ref={video}
           source={{
-            uri: "https://pop.tv.br/hls/test.m3u8",
+            uri: "https://rtisoluctions.com.br/hls/test.m3u8",
           }}
           shouldPlay={true}
           autoPlay={true}
