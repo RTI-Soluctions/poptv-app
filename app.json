@@ -37,13 +37,11 @@
       }
     },
     "plugins": [
-      "expo-video",
       [
-        "expo-build-properties",
+        "expo-video",
         {
-          "ios": {
-            "deploymentTarget": "13.4"
-          }
+          "supportsBackgroundPlayback": true,
+          "supportsPictureInPicture": true
         }
       ]
     ],

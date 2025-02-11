@@ -169,6 +169,7 @@ export default function VideoPlayer() {
           useNativeControls={true}
           resizeMode={ResizeMode.CONTAIN}
           isFullScreen={isFullscreen}
+          isPictureInPictureEnabled={true}
           bufferConfig={{
             minBufferMs: 15000,
             maxBufferMs: 50000,
