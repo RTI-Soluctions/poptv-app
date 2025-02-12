@@ -8,14 +8,14 @@ export type Program = {
 };
 
 import Compilacao from "../../assets/programs/compilacao-clipes.png"
-import Desperta from "../../assets/programs/desperta-icl.jpeg"
-import ICLNoticias1 from "../../assets/programs/icl-noticias-1.jpeg"
-import EmDetalhes from "../../assets/programs/em-detalhes.jpeg"
-import Mercados from "../../assets/programs/icl-mercados.jpeg"
-import Role from "../../assets/programs/role-icl.jpeg"
-import BemMelhor from "../../assets/programs/bem-melhor.jpg"
+import Desperta from "../../assets/programs/desperta-icl.png"
+import ICLNoticias1 from "../../assets/programs/icl-noticias-1.png"
+import EmDetalhes from "../../assets/programs/em-detalhes.png"
+import Mercados from "../../assets/programs/icl-mercados.png"
+import Role from "../../assets/programs/role-icl.png"
+import BemMelhor from "../../assets/programs/bem-melhor.png"
 import Petlovers from "../../assets/programs/pet-lovers-cast.png"
-import ICLNoticiasNoite from "../../assets/programs/icl-noticias.jpg"
+import ICLNoticiasNoite from "../../assets/programs/icl-noticias.png"
 import ChicoEntrevista from "../../assets/programs/chico-entrevista.png"
 import Matine from "../../assets/programs/matine-pop-tv.png"
 import SessaoRetro from "../../assets/programs/sessao-retro.png"
@@ -25,6 +25,8 @@ import FestSeries from "../../assets/programs/fest-series.png"
 import Espiritualidade from "../../assets/programs/espiritualidade.png"
 import Provocacao from "../../assets/programs/provocacao.png"
 import ScoobyDoo from "../../assets/programs/hora-do-scoobydoo.png"
+import LucyMello from "../../assets/programs/lucy-mello.png"
+import PodCarro from "../../assets/programs/pod-carro.png"
 
 
 
@@ -106,7 +108,7 @@ export const Programs = [
     start: "18:00",
     end: "19:30",
     days: [1, 2, 3, 4, 5],
-    name: "ICL Notícias Noite",
+    name: "ICL Notícias 2",
     image: ICLNoticiasNoite,
     description:"Texto",
   },
@@ -119,11 +121,27 @@ export const Programs = [
     description:"Texto",
   },
   {
+    start: "23:00",
+    end: "00:00",
+    days: [1],
+    name: "Podcast Lucy Mello",
+    image: LucyMello,
+    description:"Texto",
+  },
+  {
     start: "19:30",
     end: "20:00",
     days: [2],
     name: "Espiritualidade Na Ação",
     image: Espiritualidade,
+    description:"Texto",
+  },
+  {
+    start: "23:00",
+    end: "00:00",
+    days: [2],
+    name: "Pod&Carrro",
+    image: PodCarro,
     description:"Texto",
   },
   {
