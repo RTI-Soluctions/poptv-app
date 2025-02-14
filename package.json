@@ -12,6 +12,7 @@
     "@react-native-community/netinfo": "11.4.1",
     "axios": "^1.7.2",
     "burnt": "^0.12.2",
+    "eas-cli": "^15.0.10",
     "expo": "^52.0.33",
     "expo-application": "~6.0.2",
     "expo-av": "~15.0.2",

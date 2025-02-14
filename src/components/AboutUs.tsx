@@ -1,5 +1,5 @@
 import React from "react";
-import { Linking, Text, TouchableOpacity, View } from "react-native";
+import { Linking, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Divisor } from "./Divisor";
 import { useAppContext } from "../context/AppContext";
 import { PolicyModal } from "./PolicyModal";
@@ -8,10 +8,10 @@ export const AboutUs = () => {
   const { isModalOpen, setIsModalOpen } = useAppContext();
 
   return (
-    <React.Fragment>
+    <ScrollView className="flex-1 w-96 pb-20">
       {isModalOpen && <PolicyModal />}
       {!isModalOpen && (
-        <View className="flex-col my-8 p-2">
+        <View className="flex-col my-8 p-2 mb-20">
           <View className="flex-col bg-gray-900 p-4 m-4 mt-[-16]">
             <Text className="text-2xl font-semibold text-white">Sobre Nós</Text>
             <Divisor />
@@ -59,6 +59,6 @@ export const AboutUs = () => {
           </TouchableOpacity>
         </View>
       )}
-    </React.Fragment>
+    </ScrollView>
   );
 };

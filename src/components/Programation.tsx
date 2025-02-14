@@ -44,7 +44,7 @@ export const Programation = () => {
               className="w-full h-40 object-fill rounded mb-[-8px] "
             />
             <View className="flex-row justify-between items-center ">
-              <Text className="font-bold text-xl text-left pt-5 text-white">
+              <Text className="font-bold text-xl text-left pt-5 w-[70%] text-white">
                 {program.name}
               </Text>
               <Text className="font-normal text-base text-left pt-5 text-gray-400 ">
