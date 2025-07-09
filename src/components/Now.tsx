@@ -47,7 +47,7 @@ export const Now = () => {
   }, []);
 
   return (
-    <View className="flex-col justify-center items-center bg-gray-900 pt-4 w-full">
+    <View className="flex-col justify-center items-center bg-black pt-4 w-full">
       {program && (
         <>
           <Text className="text-left text-xl font-semibold w-[90%] text-gray-50">

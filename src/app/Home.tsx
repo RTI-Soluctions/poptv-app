@@ -53,7 +53,7 @@ export const Home = () => {
 
   return (
     <React.Fragment>
-      <View className="flex-1 bg-gray-900 flex-col items-center">
+      <View className="flex-1 bg-black flex-col items-center">
         <View className="flex-2 flex-row pt-12 pb-2 justify-center items-center gap-4">
           <TouchableOpacity>
             <Image className="w-24 h-10" source={logoPop} />

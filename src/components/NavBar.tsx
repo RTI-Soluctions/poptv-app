@@ -37,7 +37,7 @@ export const Navbar = () => {
 
   return (
     <React.Fragment>
-      <View className="flex-row justify-center gap-x-4 bg-gray-900 w-full">
+      <View className="flex-row justify-center gap-x-4 bg-black w-full">
         <TouchableOpacity onPress={handleHome} className="p-1 ">
           <Text
             className="text-sm text-white"

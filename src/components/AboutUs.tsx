@@ -12,7 +12,7 @@ export const AboutUs = () => {
       {isModalOpen && <PolicyModal />}
       {!isModalOpen && (
         <View className="flex-col my-8 p-2 mb-20">
-          <View className="flex-col bg-gray-900 p-4 m-4 mt-[-16]">
+          <View className="flex-col bg-black p-4 m-4 mt-[-16]">
             <Text className="text-2xl font-semibold text-white">Sobre Nós</Text>
             <Divisor />
             <Text className="text-justify text-sm text-white pt-4">
@@ -42,9 +42,9 @@ export const AboutUs = () => {
             email{" "}
             <Text
               className="text-[#1bafff] underline"
-              onPress={() => Linking.openURL("mailto:contato@poptv.com.br")}
+              onPress={() => Linking.openURL("mailto:contato@poa24horas.com.br")}
             >
-              contato@pop.tv.br.
+              contato@poa24horas.com.br.
             </Text>
           </Text>
           <TouchableOpacity
