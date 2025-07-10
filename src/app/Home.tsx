@@ -1,5 +1,5 @@
 import Toast from "react-native-toast-message";
-import logoPop from "../../assets/logo-pop.png";
+import logoPop from "../../assets/Icon.png";
 import { Navbar } from "../components/NavBar";
 import { Divisor } from "../components/Divisor";
 import { AboutUs } from "../components/AboutUs";

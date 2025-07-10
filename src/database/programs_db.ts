@@ -13,11 +13,10 @@ import ICLNoticias1 from "../../assets/programs/icl-noticias-1.png"
 import EmDetalhes from "../../assets/programs/em-detalhes.png"
 import Mercados from "../../assets/programs/icl-mercados.png"
 import Role from "../../assets/programs/role-icl.png"
-import BemMelhor from "../../assets/programs/bem-melhor.png"
-import Petlovers from "../../assets/programs/pet-lovers-cast.png"
+// import BemMelhor from "../../assets/programs/bem-melhor.png"
+// import Petlovers from "../../assets/programs/pet-lovers-cast.png"
 import ICLNoticiasNoite from "../../assets/programs/icl-noticias.png"
 import ChicoEntrevista from "../../assets/programs/chico-entrevista.png"
-import Matine from "../../assets/programs/matine-pop-tv.png"
 import SessaoRetro from "../../assets/programs/sessao-retro.png"
 import ManhaCrianca from "../../assets/programs/manha-crianca.png"
 import PrimeiraSessao from "../../assets/programs/primeira-sessao.png"
@@ -25,7 +24,7 @@ import FestSeries from "../../assets/programs/fest-series.png"
 import Espiritualidade from "../../assets/programs/espiritualidade.png"
 import Provocacao from "../../assets/programs/provocacao.png"
 import ScoobyDoo from "../../assets/programs/hora-do-scoobydoo.png"
-import LucyMello from "../../assets/programs/lucy-mello.png"
+// import LucyMello from "../../assets/programs/lucy-mello.png"
 import PodCarro from "../../assets/programs/pod-carro.png"
 
 
@@ -38,7 +37,7 @@ export const Programs = [
     days: [1, 2, 3, 4, 5],
     name: "Desperta ICL",
     image: Desperta,
-    description:"Texto",
+    description: "Texto",
   },
   {
     start: "08:00",
@@ -46,7 +45,7 @@ export const Programs = [
     days: [1, 2, 3, 4, 5],
     name: "ICL Notícias 1",
     image: ICLNoticias1,
-    description:"Texto",
+    description: "Texto",
   },
   {
     start: "10:00",
@@ -54,7 +53,7 @@ export const Programs = [
     days: [1, 2, 3, 4, 5],
     name: "Em Detalhes",
     image: EmDetalhes,
-    description:"Texto",
+    description: "Texto",
   },
   {
     start: "11:00",
@@ -62,7 +61,7 @@ export const Programs = [
     days: [1, 2, 3, 4, 5],
     name: "ICL Mercados e Investimentos",
     image: Mercados,
-    description:"Texto",
+    description: "Texto",
   },
   {
     start: "11:30",
@@ -70,39 +69,31 @@ export const Programs = [
     days: [1, 2, 3, 4, 5],
     name: "Rolê ICL",
     image: Role,
-    description:"Texto",
+    description: "Texto",
   },
-  {
-    start: "12:30",
-    end: "13:30",
-    days: [1, 2, 3, 4, 5, 6],
-    name: "Bem Melhor",
-    image: BemMelhor,
-    description:"Programa de variedades voltado ao Universo da gastronomia, viagens, turismo e bem estar! Apresentado por Flávio Júnior.",
-  },
-  {
-    start: "13:00",
-    end: "14:00",
-    days: [1, 2, 3, 4, 5, 6],
-    name: "Pet Lovers Cast",
-    image: Petlovers,
-    description:"",
-  },
-  {
-    start: "14:00",
-    end: "16:00",
-    days: [1, 2, 3, 4, 5, 6],
-    name: "Matinê Pop TV",
-    image: Matine,
-    description:"Melhores Filmes que marcaram época, grandes clássicos do cinema, comédias, aventuras, musicais, romances e muito mais!",
-  },
+  // {
+  //   start: "12:30",
+  //   end: "13:30",
+  //   days: [1, 2, 3, 4, 5, 6],
+  //   name: "Bem Melhor",
+  //   image: BemMelhor,
+  //   description:"Programa de variedades voltado ao Universo da gastronomia, viagens, turismo e bem estar! Apresentado por Flávio Júnior.",
+  // },
+  // {
+  //   start: "13:00",
+  //   end: "14:00",
+  //   days: [1, 2, 3, 4, 5, 6],
+  //   name: "Pet Lovers Cast",
+  //   image: Petlovers,
+  //   description:"",
+  // },
   {
     start: "16:00",
     end: "17:30",
     days: [1, 2, 3, 4, 5, 6],
     name: "Sessão Retrô",
     image: SessaoRetro,
-    description:"A Sessão Retrô é uma faixa que apresenta séries atuais e clássicas que marcaram época na TV.",
+    description: "A Sessão Retrô é uma faixa que apresenta séries atuais e clássicas que marcaram época na TV.",
   },
   {
     start: "18:00",
@@ -110,7 +101,7 @@ export const Programs = [
     days: [1, 2, 3, 4, 5],
     name: "ICL Notícias 2",
     image: ICLNoticiasNoite,
-    description:"Texto",
+    description: "Texto",
   },
   {
     start: "20:00",
@@ -118,23 +109,23 @@ export const Programs = [
     days: [1],
     name: "Chico Pinheiro Entrevista",
     image: ChicoEntrevista,
-    description:"Texto",
+    description: "Texto",
   },
-  {
-    start: "23:00",
-    end: "00:00",
-    days: [1],
-    name: "Podcast Lucy Mello",
-    image: LucyMello,
-    description:"Texto",
-  },
+  // {
+  //   start: "23:00",
+  //   end: "00:00",
+  //   days: [1],
+  //   name: "Podcast Lucy Mello",
+  //   image: LucyMello,
+  //   description: "Texto",
+  // },
   {
     start: "19:30",
     end: "20:00",
     days: [2],
     name: "Espiritualidade Na Ação",
     image: Espiritualidade,
-    description:"Texto",
+    description: "Texto",
   },
   {
     start: "23:00",
@@ -142,7 +133,7 @@ export const Programs = [
     days: [2],
     name: "Pod&Carrro",
     image: PodCarro,
-    description:"Texto",
+    description: "Texto",
   },
   {
     start: "19:30",
@@ -150,7 +141,7 @@ export const Programs = [
     days: [3],
     name: "Provocação Histórica",
     image: Provocacao,
-    description:"Texto",
+    description: "Texto",
   },
   {
     start: "08:00",
@@ -158,7 +149,7 @@ export const Programs = [
     days: [6],
     name: "Manhã Criança",
     image: ManhaCrianca,
-    description:"Texto",
+    description: "Texto",
   },
   {
     start: "06:00",
@@ -166,7 +157,7 @@ export const Programs = [
     days: [2, 5],
     name: "Hora do Scooby-Doo",
     image: ScoobyDoo,
-    description:"Texto",
+    description: "Texto",
   },
   {
     start: "10:30",
@@ -174,7 +165,7 @@ export const Programs = [
     days: [6],
     name: "Cinema - Primeira Sessão",
     image: PrimeiraSessao,
-    description:"Texto",
+    description: "Texto",
   },
   {
     start: "18:00",
@@ -182,7 +173,7 @@ export const Programs = [
     days: [6, 7],
     name: "Fest Series",
     image: FestSeries,
-    description:"Texto",
+    description: "Texto",
   },
   {
     start: "06:30",

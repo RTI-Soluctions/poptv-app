@@ -28,11 +28,11 @@ export const PolicyModal = () => {
           <Image source={CloseIcon} className="w-5 h-5" />
         </TouchableOpacity>
         <Text className="text-2xl font-semibold text-white mt-5">
-          Política de Privacidade e Proteção de Dados do Usuário - Porto Alegre 24 Horas TV
+          Política de Privacidade e Proteção de Dados do Usuário - Porto Alegre 24h TV
         </Text>
 
         <Text className="text-justify text-sm text-white pt-4">
-          Na Porto Alegre 24 Horas TV, estamos comprometidos com a proteção da privacidade e dos
+          Na Porto Alegre 24h TV, estamos comprometidos com a proteção da privacidade e dos
           dados pessoais dos nossos usuários. Esta política foi elaborada de
           acordo com a Lei Geral de Proteção de Dados (LGPD - Lei nº
           13.709/2018) e tem como objetivo esclarecer como lidamos com
@@ -43,7 +43,7 @@ export const PolicyModal = () => {
           1. Coleta de Dados Pessoais
         </Text>
         <Text className="text-justify text-sm text-white pt-4">
-          A Porto Alegre 24 Horas TV valoriza a privacidade de seus usuários e, por isso,{" "}
+          A Porto Alegre 24h TV valoriza a privacidade de seus usuários e, por isso,{" "}
           <Text className="font-bold">não coleta quaisquer dados pessoais</Text>{" "}
           sem o consentimento expresso e informado. Não solicitamos informações
           como nome, endereço, telefone, e-mail ou qualquer outro dado que possa
@@ -65,7 +65,7 @@ export const PolicyModal = () => {
           3. Cookies e Tecnologias de Rastreamento
         </Text>
         <Text className="text-justify text-sm text-white pt-4">
-          A Porto Alegre 24 Horas TV adota uma política de{" "}
+          A Porto Alegre 24h TV adota uma política de{" "}
           <Text className="font-bold">não utilização de cookies</Text> ou outras
           tecnologias de rastreamento que possam identificar ou monitorar o
           comportamento do usuário. Quaisquer cookies necessários para a
@@ -103,7 +103,7 @@ export const PolicyModal = () => {
         <Text className="text-justify text-sm text-white pt-4">
           No entanto, como nossa política é de{" "}
           <Text className="font-bold">não coleta de dados pessoais</Text>, tais
-          solicitações geralmente não serão aplicáveis no contexto da Porto Alegre 24 Horas TV.
+          solicitações geralmente não serão aplicáveis no contexto da Porto Alegre 24h TV.
         </Text>
 
         <Text className="text-lg font-semibold text-white mt-5">
@@ -149,7 +149,7 @@ export const PolicyModal = () => {
           Política de Não Coleta de Dados do Usuário
         </Text>
         <Text className="text-justify text-sm text-white pt-4 mb-5">
-          Porto Alegre 24 Horas TV adota uma política clara e transparente de{" "}
+          Porto Alegre 24h TV adota uma política clara e transparente de{" "}
           <Text className="font-bold mb-4">não coleta de dados pessoais</Text>{" "}
           de seus usuários. Isso significa que:
         </Text>
@@ -173,7 +173,7 @@ export const PolicyModal = () => {
         </Text>
 
         <Text className="text-base font-semibold text-white">
-          A Porto Alegre 24 Horas - CNPJ: 35.133.051/0001-76
+          A Porto Alegre 24h - CNPJ: 35.133.051/0001-76
         </Text>
         <Text className="text-justify text-sm text-white pt-4">
           Última atualização: 09 de julho de 2025.

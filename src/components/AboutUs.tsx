@@ -16,19 +16,19 @@ export const AboutUs = () => {
             <Text className="text-2xl font-semibold text-white">Sobre Nós</Text>
             <Divisor />
             <Text className="text-justify text-sm text-white pt-4">
-              A Pop TV é uma emissora de televisão aberta, com sede em
+              A Porto Alegre 24h TV é uma emissora de televisão aberta, com sede em
               Sobradinho-RS, que atinge também a cidade de Porto Alegre-RS,
-              respectivamente nos canais 45.1 e 23.1.
+              respectivamente nos canais 45.1 e 24.1.
             </Text>
             <Text className="text-justify text-sm text-white pt-4">
               Com o propósito de informar, entreter e enriquecer a cultura da
-              comunidade, a Pop TV apresenta uma programação diversificada,
+              comunidade, a Porto Alegre 24h TV apresenta uma programação diversificada,
               abrangendo jornalismo, entretenimento, cultura e lazer.
               Comprometida com a excelência, buscamos constantemente inovar e
               oferecer conteúdo de qualidade para nossos telespectadores.
             </Text>
             <Text className="text-justify text-sm text-white pt-4">
-              A Pop TV valoriza a privacidade e a proteção dos dados pessoais de
+              A Porto Alegre 24h TV valoriza a privacidade e a proteção dos dados pessoais de
               seus usuários. Em conformidade com a Lei Geral de Proteção de
               Dados (LGPD), adotamos medidas rigorosas para garantir a segurança
               de suas informações. Para mais detalhes clique em Saiba Mais.
@@ -37,9 +37,9 @@ export const AboutUs = () => {
           </View>
 
           <Text className="text-justify text-sm text-white my-0 mx-8 mb-10">
-            Para saber mais sobre a programação da Pop TV, novidades e interagir
-            conosco, acesse nosso site www.pop.tv.br ou entre em contato pelo
-            email{" "}
+            Para saber mais sobre a programação da Porto Alegre 24h TV,
+            novidades e interagir conosco, acesse nosso site www.poa24horas.com.br
+            ou entre em contato pelo email{" "}
             <Text
               className="text-[#1bafff] underline"
               onPress={() => Linking.openURL("mailto:contato@poa24horas.com.br")}

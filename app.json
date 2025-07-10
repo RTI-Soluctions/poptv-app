@@ -1,44 +1,39 @@
 {
   "expo": {
-    "name": "Pop TV",
+    "name": "Porto Alegre 24h TV",
     "slug": "poptv-app",
-    "version": "1.3.0",
+    "version": "2.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon-pop.png",
+    "icon": "./assets/Icon.png",
     "userInterfaceStyle": "dark",
     "expo": {
       "newArchEnabled": true
     },
     "splash": {
-      "image": "./assets/splash-pop.png",
+      "image": "./assets/Splash-POA.png",
       "resizeMode": "contain",
-      "backgroundColor": "#111827"
+      "backgroundColor": "#000000"
     },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ormartins.poptvapp",
       "infoPlist": {
-        "UIBackgroundModes": [
-          "audio",
-          "audio"
-        ],
+        "UIBackgroundModes": ["audio"],
         "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
-      "permissions": [
-        "INTERNET"
-      ],
+      "permissions": ["INTERNET"],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon-pop-android.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#000000"
       },
       "package": "com.ormartins.poptvapp"
     },
     "web": {
-      "favicon": "./assets/icon-pop.png",
-      "name": "Pop TV",
-      "backgroundColor": "#ffffff"
+      "favicon": "./assets/favicon.png",
+      "name": "Porto Alegre 24 horas TV",
+      "backgroundColor": "#000000"
     },
     "extra": {
       "eas": {
