@@ -42,9 +42,9 @@ export const AboutUs = () => {
             ou entre em contato pelo email{" "}
             <Text
               className="text-[#1bafff] underline"
-              onPress={() => Linking.openURL("mailto:contato@poa24horas.com.br")}
+              onPress={() => Linking.openURL("mailto:contato.poa24htv@gmail.com")}
             >
-              contato@poa24horas.com.br.
+              contato.poa24htv@gmail.com.
             </Text>
           </Text>
           <TouchableOpacity

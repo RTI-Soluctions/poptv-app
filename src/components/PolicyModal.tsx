@@ -135,10 +135,10 @@ export const PolicyModal = () => {
           informações, entre em contato com nossa equipe de suporte:
           <Text
             className="list-items text-[#1bafff] underline"
-            onPress={() => Linking.openURL("mailto:contato@poa24horas.com.br")}
+            onPress={() => Linking.openURL("mailto:contato.poa24htv@gmail.com")}
           >
             {" "}
-            contato@poa24horas.com.br
+            contato.poa24htv@gmail.com
           </Text>
           .
         </Text>
