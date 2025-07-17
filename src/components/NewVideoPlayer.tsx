@@ -1,6 +1,6 @@
 import { useEvent } from 'expo';
 import { useVideoPlayer, VideoView } from 'expo-video';
-import { StyleSheet, View} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 const videoSource =
   "https://rtisoluctions.com.br/hls/test.m3u8";
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   video: {
     marginTop: 16,
-    width: 386,
+    width: "96%",
     aspectRatio: 16 / 9,
   },
 });

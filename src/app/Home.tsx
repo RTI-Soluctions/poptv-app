@@ -1,5 +1,5 @@
 import Toast from "react-native-toast-message";
-import logoPop from "../../assets/Icon.png";
+import logoPop from "../../assets/icon.png";
 import { Navbar } from "../components/NavBar";
 import { Divisor } from "../components/Divisor";
 import { AboutUs } from "../components/AboutUs";
@@ -56,7 +56,7 @@ export const Home = () => {
       <View className="flex-1 bg-black flex-col items-center">
         <View className="flex-2 flex-row pt-12 pb-2 justify-center items-center gap-4">
           <TouchableOpacity>
-            <Image className="w-24 h-10" source={logoPop} />
+            <Image className="w-24 h-16" source={logoPop} />
           </TouchableOpacity>
           <Toast visibilityTime={4000} autoHide={true} position="top" />
         </View>

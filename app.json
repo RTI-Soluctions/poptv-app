@@ -10,7 +10,7 @@
       "newArchEnabled": true
     },
     "splash": {
-      "image": "./assets/Splash-POA.png",
+      "image": "./assets/splash-poa.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
@@ -49,9 +49,7 @@
         }
       ]
     ],
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
+    "runtimeVersion": "1.0.0",
     "updates": {
       "url": "https://u.expo.dev/c3347070-5c2d-48de-b8e1-67ac53e5e918"
     }
