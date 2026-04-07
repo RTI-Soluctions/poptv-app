@@ -50,7 +50,6 @@ export const AboutUs = () => {
           <TouchableOpacity
             onPress={() => {
               setIsModalOpen(true);
-              console.log("Clicou para abrir o modal.");
             }}
           >
             <Text className="text-[#1bafff] text-sm ml-8 mt-[-16px]">
