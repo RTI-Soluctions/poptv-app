@@ -2,7 +2,7 @@
   "expo": {
     "name": "Porto Alegre 24h TV",
     "slug": "poptv-app",
-    "version": "3.0.1",
+    "version": "3.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
@@ -60,7 +60,7 @@
       ],
       "expo-asset"
     ],
-    "runtimeVersion": "3.0.1",
+    "runtimeVersion": "3.1.0",
     "updates": {
       "url": "https://u.expo.dev/c3347070-5c2d-48de-b8e1-67ac53e5e918"
     }
