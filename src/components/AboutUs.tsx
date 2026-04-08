@@ -16,9 +16,7 @@ export const AboutUs = () => {
             <Text className="text-2xl font-semibold text-white">Sobre Nós</Text>
             <Divisor />
             <Text className="text-justify text-sm text-white pt-4">
-              A Porto Alegre 24h TV é uma emissora de televisão aberta, com sede em
-              Sobradinho-RS, que atinge também a cidade de Porto Alegre-RS,
-              respectivamente nos canais 45.1 e 24.1.
+              A Porto Alegre 24h TV é uma emissora de televisão aberta em Porto Alegre e Bento Gonçalves no Canal 8.1 em Sobradinho-RS no canal 45.1.
             </Text>
             <Text className="text-justify text-sm text-white pt-4">
               Com o propósito de informar, entreter e enriquecer a cultura da

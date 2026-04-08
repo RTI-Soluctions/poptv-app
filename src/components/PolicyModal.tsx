@@ -56,7 +56,7 @@ export const PolicyModal = () => {
           {"\n"}• Estatísticas básicas de desempenho do aplicativo;
           {"\n"}• Informações genéricas sobre o dispositivo e sistema operacional.
           {"\n\n"}
-          Essas informações não são associadas à sua identidade e servem estritamente para que nossos desenvolvedores possam corrigir bugs e melhorar a sua experiência de uso, respeitando integralmente as políticas das plataformas de distribuição de aplicativos.
+          Essas informações não são associadas à sua identidade e servem estritamente para que nossos desenvolvedores possam corrigir bugs e melhorar a sua experiência de uso, respeitando integralmente as políticas da plataforma.
         </Text>
 
         <Text className="text-lg font-semibold text-white mt-5">
@@ -70,7 +70,7 @@ export const PolicyModal = () => {
           4. Segurança da Informação
         </Text>
         <Text className="text-justify text-sm text-white pt-4">
-          O conteúdo fornecido pelo nosso aplicativo (transmissões de vídeo e grade de programação) é entregue através de conexões de rede seguras. Quaisquer dados de diagnóstico e telemetria coletados pelas bibliotecas de base respeitam os protocolos rigorosos de segurança e criptografia exigidos pelas lojas de aplicativos.
+          O conteúdo fornecido pelo nosso aplicativo (transmissões de vídeo e grade de programação) é entregue através de conexões de rede seguras. Quaisquer dados de diagnóstico e telemetria coletados pelas bibliotecas de base respeitam os protocolos rigorosos de criptografia exigidos.
         </Text>
 
         <Text className="text-lg font-semibold text-white mt-5">
@@ -79,7 +79,7 @@ export const PolicyModal = () => {
         <Text className="text-justify text-sm text-white pt-4">
           Esta política poderá ser atualizada periodicamente para assegurar a
           conformidade com novas leis, regulamentos ou mudanças técnicas no nosso próprio aplicativo.
-          Recomendamos que você revise esse documento esporadicamente ao atualizar o app pela loja oficial.
+          Recomendamos que você revise esse documento esporadicamente ao atualizar o app.
         </Text>
 
         <Text className="text-lg font-semibold text-white mt-5">

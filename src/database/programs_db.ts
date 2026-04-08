@@ -12,25 +12,69 @@ import Desperta from "../../assets/programs/desperta-icl.png"
 import ICLNoticias1 from "../../assets/programs/icl-noticias-1.png"
 import EmDetalhes from "../../assets/programs/em-detalhes.png"
 import Mercados from "../../assets/programs/icl-mercados.png"
-import Role from "../../assets/programs/role-icl.png"
-// import BemMelhor from "../../assets/programs/bem-melhor.png"
-// import Petlovers from "../../assets/programs/pet-lovers-cast.png"
-import ICLNoticiasNoite from "../../assets/programs/icl-noticias.png"
-import ChicoEntrevista from "../../assets/programs/chico-entrevista.png"
 import SessaoRetro from "../../assets/programs/sessao-retro.png"
 import ManhaCrianca from "../../assets/programs/manha-crianca.png"
 import PrimeiraSessao from "../../assets/programs/primeira-sessao.png"
 import FestSeries from "../../assets/programs/fest-series.png"
-import Espiritualidade from "../../assets/programs/espiritualidade.png"
-import Provocacao from "../../assets/programs/provocacao.png"
 import ScoobyDoo from "../../assets/programs/hora-do-scoobydoo.png"
-// import LucyMello from "../../assets/programs/lucy-mello.png"
-import PodCarro from "../../assets/programs/pod-carro.png"
+import DaOPlay from "../../assets/programs/da-o-play.png"
+import RaioX from "../../assets/programs/raiox.png"
+import RondaPopular from "../../assets/programs/ronda-popular.png"
+import ElaEOElo from "../../assets/programs/ela-e-o-elo.png"
+import LuauBandas from "../../assets/programs/luau-bandas.png"
+import XequeMate from "../../assets/programs/xeque-mate.png"
 
 
 
 export const Programs = [
-
+  {
+    start: "12:00",
+    end: "13:00",
+    days: [1, 2, 3, 4, 5],
+    name: "Raio X",
+    image: RaioX,
+    description: "Texto",
+  },
+  {
+    start: "20:00",
+    end: "22:00",
+    days: [1, 2, 3, 4, 5],
+    name: "Ronda Popular",
+    image: RondaPopular,
+    description: "Texto",
+  },
+  {
+    start: "22:00",
+    end: "23:00",
+    days: [1],
+    name: "Ela é o Elo",
+    image: ElaEOElo,
+    description: "Texto",
+  },
+  {
+    start: "22:00",
+    end: "23:00",
+    days: [2],
+    name: "Xeque Mate",
+    image: XequeMate,
+    description: "Texto",
+  },
+  {
+    start: "21:00",
+    end: "22:00",
+    days: [4],
+    name: "Dá o Play",
+    image: DaOPlay,
+    description: "Texto",
+  },
+  {
+    start: "21:00",
+    end: "22:00",
+    days: [7],
+    name: "Luau Acústico ",
+    image: LuauBandas,
+    description: "Texto",
+  },
   {
     start: "07:00",
     end: "08:00",
@@ -64,84 +108,12 @@ export const Programs = [
     description: "Texto",
   },
   {
-    start: "11:30",
-    end: "12:30",
-    days: [1, 2, 3, 4, 5],
-    name: "Rolê ICL",
-    image: Role,
-    description: "Texto",
-  },
-  // {
-  //   start: "12:30",
-  //   end: "13:30",
-  //   days: [1, 2, 3, 4, 5, 6],
-  //   name: "Bem Melhor",
-  //   image: BemMelhor,
-  //   description:"Programa de variedades voltado ao Universo da gastronomia, viagens, turismo e bem estar! Apresentado por Flávio Júnior.",
-  // },
-  // {
-  //   start: "13:00",
-  //   end: "14:00",
-  //   days: [1, 2, 3, 4, 5, 6],
-  //   name: "Pet Lovers Cast",
-  //   image: Petlovers,
-  //   description:"",
-  // },
-  {
     start: "16:00",
     end: "17:30",
     days: [1, 2, 3, 4, 5, 6],
     name: "Sessão Retrô",
     image: SessaoRetro,
     description: "A Sessão Retrô é uma faixa que apresenta séries atuais e clássicas que marcaram época na TV.",
-  },
-  {
-    start: "18:00",
-    end: "19:30",
-    days: [1, 2, 3, 4, 5],
-    name: "ICL Notícias 2",
-    image: ICLNoticiasNoite,
-    description: "Texto",
-  },
-  {
-    start: "20:00",
-    end: "21:00",
-    days: [1],
-    name: "Chico Pinheiro Entrevista",
-    image: ChicoEntrevista,
-    description: "Texto",
-  },
-  // {
-  //   start: "23:00",
-  //   end: "00:00",
-  //   days: [1],
-  //   name: "Podcast Lucy Mello",
-  //   image: LucyMello,
-  //   description: "Texto",
-  // },
-  {
-    start: "19:30",
-    end: "20:00",
-    days: [2],
-    name: "Espiritualidade Na Ação",
-    image: Espiritualidade,
-    description: "Texto",
-  },
-  {
-    start: "23:00",
-    end: "00:00",
-    days: [2],
-    name: "Pod&Carrro",
-    image: PodCarro,
-    description: "Texto",
-  },
-  {
-    start: "19:30",
-    end: "20:30",
-    days: [3],
-    name: "Provocação Histórica",
-    image: Provocacao,
-    description: "Texto",
   },
   {
     start: "08:00",
@@ -183,5 +155,4 @@ export const Programs = [
     image: Compilacao,
     description: "Texto",
   },
-
 ];

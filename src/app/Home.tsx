@@ -4,9 +4,9 @@ import { Navbar } from "../components/NavBar";
 import { Divisor } from "../components/Divisor";
 import { AboutUs } from "../components/AboutUs";
 import { useAppContext } from "../context/AppContext";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { MainContainer } from "../components/MainContainer";
-import { View, Image, TouchableOpacity, ScrollView } from "react-native";
+import { View, Image, TouchableOpacity, ScrollView, RefreshControl } from "react-native";
 import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
 import * as Burnt from "burnt";
 import { Programation } from "../components/Programation";
@@ -14,37 +14,53 @@ import { Footer } from "../components/Footer";
 
 export const Home = () => {
   const [key, setKey] = useState(0);
+  const previousNetworkType = useRef<string | null>(null);
   const { isHome, isAboutUs, isPrograms } = useAppContext();
+
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    // Reinicia a key forçando o desmonte e recriação do componente de Vídeo (NewVideoPlayer)
+    // Assim o Player baixa o stream HLS (m3u8) atualizado desde o começo
+    setKey((prevKey) => prevKey + 1);
+
+    // Tempo simulado de recarregamento
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1500);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
-      if (state.type === "cellular") {
-        Burnt.toast({
-          duration: 1,
-          haptic: "error",
-          title: "Você está usando dados móveis!",
-          from: "bottom",
-        });
+      // Prevents the event from firing multiple times for the same network type state updates 
+      // (like obtaining ip, internet reachability changes that fire repeatedly on app mount).
+      if (previousNetworkType.current !== state.type) {
+        previousNetworkType.current = state.type;
 
-        setKey((prevKey) => prevKey + 1);
-      } else if (state.type === "wifi") {
-        Burnt.toast({
-          duration: 1,
-          haptic: "error",
-          title: "Você está conectado a uma rede wifi!",
-          from: "bottom",
-        });
-      }
-    });
-
-    NetInfo.fetch().then((state: NetInfoState) => {
-      if (!state.isConnected) {
-        Burnt.toast({
-          duration: 1,
-          haptic: "error",
-          title: "Você está offline!",
-          from: "bottom",
-        });
+        if (state.type === "cellular") {
+          Burnt.toast({
+            duration: 1,
+            haptic: "error",
+            title: "Você está usando dados móveis!",
+            from: "bottom",
+          });
+          setKey((prevKey) => prevKey + 1);
+        } else if (state.type === "wifi") {
+          Burnt.toast({
+            duration: 1,
+            haptic: "error",
+            title: "Você está conectado a uma rede wifi!",
+            from: "bottom",
+          });
+        } else if (state.type === "none" || !state.isConnected) {
+          Burnt.toast({
+            duration: 1,
+            haptic: "error",
+            title: "Você está offline!",
+            from: "bottom",
+          });
+        }
       }
     });
 
@@ -63,7 +79,18 @@ export const Home = () => {
         <Navbar />
         <Divisor />
         {isHome && (
-          <ScrollView className="flex-1 w-full ml-4">
+          <ScrollView
+            className="flex-1 w-full ml-4"
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                tintColor="#ffffff"
+                colors={["#ffffff"]}
+                progressBackgroundColor="#000000"
+              />
+            }
+          >
             <MainContainer key={key} />
           </ScrollView>
         )}
