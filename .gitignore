@@ -33,3 +33,9 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# Expo CNG (Continuous Native Generation)
+/android
+/ios
+
+EAS-SUBMIT-ANDROID.md

@@ -10,6 +10,10 @@ interface MyContextType {
   setIsAboutUs: React.Dispatch<React.SetStateAction<boolean>>;
   isPrograms: boolean;
   setIsPrograms: React.Dispatch<React.SetStateAction<boolean>>;
+  isVideos: boolean;
+  setIsVideos: React.Dispatch<React.SetStateAction<boolean>>;
+  isNews: boolean;
+  setIsNews: React.Dispatch<React.SetStateAction<boolean>>;
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   dayList: Epg[];
@@ -26,6 +30,8 @@ export const MyContextProvider = ({ children }: MyContextProviderProps) => {
   const [isHome, setIsHome] = React.useState(true);
   const [isAboutUs, setIsAboutUs] = React.useState(false);
   const [isPrograms, setIsPrograms] = React.useState(false);
+  const [isVideos, setIsVideos] = React.useState(false);
+  const [isNews, setIsNews] = React.useState(false);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [state, setState] = useState<string | null>(null);
   const [dayList, setDayList] = React.useState<Epg[]>([]);
@@ -53,6 +59,10 @@ export const MyContextProvider = ({ children }: MyContextProviderProps) => {
         setIsAboutUs,
         isPrograms,
         setIsPrograms,
+        isVideos,
+        setIsVideos,
+        isNews,
+        setIsNews,
         isModalOpen,
         setIsModalOpen,
         dayList,

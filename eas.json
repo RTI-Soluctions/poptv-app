@@ -1,6 +1,7 @@
 {
   "build": {
     "preview": {
+      "channel": "preview",
       "android": {
         "buildType": "apk"
       }
@@ -16,7 +17,9 @@
     "preview4": {
       "distribution": "internal"
     },
-    "production": {}
+    "production": {
+      "channel": "production"
+    }
   },
   "cli": {
     "appVersionSource": "remote"

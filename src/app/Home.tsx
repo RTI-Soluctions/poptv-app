@@ -3,6 +3,8 @@ import logoPop from "../../assets/icon.png";
 import { Navbar } from "../components/NavBar";
 import { Divisor } from "../components/Divisor";
 import { AboutUs } from "../components/AboutUs";
+import { Videos } from "../components/Videos";
+import { News } from "../components/News";
 import { useAppContext } from "../context/AppContext";
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { MainContainer } from "../components/MainContainer";
@@ -15,7 +17,7 @@ import { Footer } from "../components/Footer";
 export const Home = () => {
   const [key, setKey] = useState(0);
   const previousNetworkType = useRef<string | null>(null);
-  const { isHome, isAboutUs, isPrograms } = useAppContext();
+  const { isHome, isAboutUs, isPrograms, isVideos, isNews } = useAppContext();
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -76,7 +78,6 @@ export const Home = () => {
           </TouchableOpacity>
           <Toast visibilityTime={4000} autoHide={true} position="top" />
         </View>
-        <Navbar />
         <Divisor />
         {isHome && (
           <ScrollView
@@ -96,8 +97,12 @@ export const Home = () => {
         )}
         {isPrograms && <Programation />}
         {isAboutUs && <AboutUs />}
+        {isVideos && <Videos />}
+        {isNews && <News />}
+
+        {/* Navigation Bar fixada no fundo */}
+        <Navbar />
       </View>
-      <Footer />
     </React.Fragment>
   );
 };
