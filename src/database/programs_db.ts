@@ -23,6 +23,7 @@ import RondaPopular from "../../assets/programs/ronda-popular.png"
 import ElaEOElo from "../../assets/programs/ela-e-o-elo.png"
 import LuauBandas from "../../assets/programs/luau-bandas.png"
 import XequeMate from "../../assets/programs/xeque-mate.png"
+import RapInCena from "../../assets/programs/rapincena-.png"
 
 
 
@@ -73,6 +74,14 @@ export const Programs = [
     days: [7],
     name: "Luau Acústico ",
     image: LuauBandas,
+    description: "Texto",
+  },
+  {
+    start: "22:00",
+    end: "23:00",
+    days: [7],
+    name: "Rap In Cena",
+    image: RapInCena,
     description: "Texto",
   },
   {

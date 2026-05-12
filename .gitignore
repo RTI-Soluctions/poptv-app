@@ -35,7 +35,7 @@ yarn-error.*
 *.tsbuildinfo
 
 # Expo CNG (Continuous Native Generation)
-/android
-/ios
+android/
+ios/
 
 EAS-SUBMIT-ANDROID.md

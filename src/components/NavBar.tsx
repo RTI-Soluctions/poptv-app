@@ -44,8 +44,8 @@ export const Navbar = () => {
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => handlePress('news')} className="items-center">
-        <Ionicons name={isNews ? "newspaper" : "newspaper-outline"} size={28} color={isNews ? "#e63946" : "gray"} />
-        <Text className={`text-[10px] mt-1 ${isNews ? "text-[#e63946] font-bold" : "text-gray-400"}`}>Notícias</Text>
+        <Ionicons name={isNews ? "newspaper" : "newspaper-outline"} size={28} color={isNews ? "#1bafff" : "gray"} />
+        <Text className={`text-[10px] mt-1 ${isNews ? "text-[#1bafff] font-bold" : "text-gray-400"}`}>Notícias</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => handlePress('aboutUs')} className="items-center">

@@ -12,7 +12,6 @@ import { View, Image, TouchableOpacity, ScrollView, RefreshControl } from "react
 import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
 import * as Burnt from "burnt";
 import { Programation } from "../components/Programation";
-import { Footer } from "../components/Footer";
 
 export const Home = () => {
   const [key, setKey] = useState(0);
@@ -23,11 +22,8 @@ export const Home = () => {
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-    // Reinicia a key forçando o desmonte e recriação do componente de Vídeo (NewVideoPlayer)
-    // Assim o Player baixa o stream HLS (m3u8) atualizado desde o começo
     setKey((prevKey) => prevKey + 1);
 
-    // Tempo simulado de recarregamento
     setTimeout(() => {
       setRefreshing(false);
     }, 1500);
@@ -35,8 +31,6 @@ export const Home = () => {
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
-      // Prevents the event from firing multiple times for the same network type state updates 
-      // (like obtaining ip, internet reachability changes that fire repeatedly on app mount).
       if (previousNetworkType.current !== state.type) {
         previousNetworkType.current = state.type;
 
