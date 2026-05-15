@@ -98,7 +98,7 @@ export const News = () => {
                 <Text className="text-2xl font-bold text-white mb-6">Portal de Notícias</Text>
 
                 {loading ? (
-                    <ActivityIndicator size="large" color="#e63946" className="mt-10" />
+                    <ActivityIndicator size="large" color="#1bafff" className="mt-10" />
                 ) : (
                     <FlatList
                         data={news}

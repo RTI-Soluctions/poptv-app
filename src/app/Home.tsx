@@ -12,7 +12,6 @@ import { View, Image, TouchableOpacity, ScrollView, RefreshControl } from "react
 import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
 import * as Burnt from "burnt";
 import { Programation } from "../components/Programation";
-import { Footer } from "../components/Footer";
 
 export const Home = () => {
   const [key, setKey] = useState(0);
