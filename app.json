@@ -2,7 +2,7 @@
   "expo": {
     "name": "Porto Alegre 24h TV",
     "slug": "poptv-app",
-    "version": "3.3.0",
+    "version": "3.6.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
@@ -56,12 +56,24 @@
           "android": {
             "useLegacyPackaging": false,
             "targetSdkVersion": 35,
-            "compileSdkVersion": 35
+            "compileSdkVersion": 35,
+            "packagingOptions": {
+              "jniLibs": {
+                "useLegacyPackaging": false
+              }
+            }
           }
         }
       ],
       "expo-asset",
-      "expo-font"
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/Ionicons.ttf"
+          ]
+        }
+      ]
     ],
     "runtimeVersion": "3.2.0",
     "updates": {

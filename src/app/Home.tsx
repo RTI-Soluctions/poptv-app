@@ -6,15 +6,15 @@ import { AboutUs } from "../components/AboutUs";
 import { Videos } from "../components/Videos";
 import { News } from "../components/News";
 import { useAppContext } from "../context/AppContext";
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { MainContainer } from "../components/MainContainer";
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import { MainContainer, MainContainerRef } from "../components/MainContainer";
 import { View, Image, TouchableOpacity, ScrollView, RefreshControl } from "react-native";
 import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
 import * as Burnt from "burnt";
 import { Programation } from "../components/Programation";
 
 export const Home = () => {
-  const [key, setKey] = useState(0);
+  const mainContainerRef = useRef<MainContainerRef>(null);
   const previousNetworkType = useRef<string | null>(null);
   const { isHome, isAboutUs, isPrograms, isVideos, isNews } = useAppContext();
 
@@ -22,7 +22,7 @@ export const Home = () => {
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-    setKey((prevKey) => prevKey + 1);
+    mainContainerRef.current?.refreshPlayer();
 
     setTimeout(() => {
       setRefreshing(false);
@@ -86,7 +86,7 @@ export const Home = () => {
               />
             }
           >
-            <MainContainer key={key} />
+            <MainContainer ref={mainContainerRef} />
           </ScrollView>
         )}
         {isPrograms && <Programation />}
