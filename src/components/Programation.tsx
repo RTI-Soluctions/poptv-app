@@ -1,5 +1,5 @@
 import React from "react";
-import {
+import { StyleSheet,
   Image,
   ImageSourcePropType,
   ScrollView,
@@ -23,54 +23,47 @@ const getDayLabel = (num: number) => daysMap[num] || "";
 
 export const Programation = () => {
   return (
-    <ScrollView className="flex-1 w-full">
-      <View className="px-5 mt-6 mb-16 w-full">
+    <ScrollView style={styles.container}>
+      <View style={styles.content}>
         {Programs.map((program, index) => (
           <View
             key={index}
-            className="mb-8 bg-[#1c1c1e] rounded-2xl overflow-hidden border border-white/5"
-            style={{
-              shadowColor: "#000",
-              shadowOffset: { width: 0, height: 4 },
-              shadowOpacity: 0.3,
-              shadowRadius: 5,
-              elevation: 8,
-            }}
+            style={styles.card}
           >
             {/* Imagem do Programa */}
-            <View className="w-full h-48 bg-[#2a2a2d]">
+            <View style={styles.imageContainer}>
               <Image
                 source={program.image as ImageSourcePropType}
-                className="w-full h-full object-cover"
+                style={styles.image}
               />
             </View>
 
             {/* Conteúdo do Card */}
-            <View className="p-5">
-              <View className="flex-row justify-between items-start mb-4">
+            <View style={styles.cardContent}>
+              <View style={styles.cardHeader}>
                 <Text
-                  className="font-bold text-xl text-white flex-1 mr-4 tracking-wide"
+                  style={styles.title}
                   numberOfLines={2}
                 >
                   {program.name}
                 </Text>
 
                 {/* Horário (Badge de cor de destaque) */}
-                <View className="bg-[#1bafff]/20 px-3 py-1.5 rounded-lg border border-[#1bafff]/30">
-                  <Text className="text-[#1bafff] font-bold text-sm">
+                <View style={styles.timeBadge}>
+                  <Text style={styles.timeLabel}>
                     {program.start} - {program.end}
                   </Text>
                 </View>
               </View>
 
               {/* Dias da Semana (Pills) */}
-              <View className="flex-row flex-wrap gap-2">
+              <View style={styles.days}>
                 {program.days.map((day, idx) => (
                   <View
                     key={idx}
-                    className="bg-white/10 px-3 py-1.5 rounded-lg"
+                    style={styles.dayBadge}
                   >
-                    <Text className="font-semibold text-xs text-gray-300 uppercase tracking-widest">
+                    <Text style={styles.dayLabel}>
                       {getDayLabel(day)}
                     </Text>
                   </View>
@@ -84,3 +77,102 @@ export const Programation = () => {
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: "0%",
+    width: "100%"
+  },
+  content: {
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginTop: 24,
+    marginBottom: 64,
+    width: "100%"
+  },
+  card: {
+    marginBottom: 32,
+    backgroundColor: "#1c1c1e",
+    borderRadius: 16,
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.05)",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 8
+  },
+  imageContainer: {
+    width: "100%",
+    height: 192,
+    backgroundColor: "#2a2a2d"
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover"
+  },
+  cardContent: {
+    padding: 20
+  },
+  cardHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    marginBottom: 16
+  },
+  title: {
+    fontWeight: "700",
+    fontSize: 20,
+    lineHeight: 28,
+    color: "#ffffff",
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: "0%",
+    marginRight: 16,
+    letterSpacing: 0.5
+  },
+  timeBadge: {
+    backgroundColor: "rgba(27, 175, 255, 0.2)",
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 6,
+    paddingBottom: 6,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "rgba(27, 175, 255, 0.3)"
+  },
+  timeLabel: {
+    color: "#1bafff",
+    fontWeight: "700",
+    fontSize: 14,
+    lineHeight: 20
+  },
+  days: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8
+  },
+  dayBadge: {
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 6,
+    paddingBottom: 6,
+    borderRadius: 8
+  },
+  dayLabel: {
+    fontWeight: "600",
+    fontSize: 12,
+    lineHeight: 16,
+    color: "#d1d5db",
+    textTransform: "uppercase",
+    letterSpacing: 1.2000000000000002
+  }
+});
