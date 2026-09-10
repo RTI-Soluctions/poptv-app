@@ -1,12 +1,32 @@
 import React from "react";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 export const Divisor = () => {
   return (
     <React.Fragment>
-      <View className="flex-row justify-center gap-x-4 bg-gray-900 ml-[-16] mt-2 w-full">
-        <View className="h-[1px] bg-gray-600 flex-1 max-w-screen-2xl" />
+      <View style={styles.container}>
+        <View style={styles.line} />
       </View>
     </React.Fragment>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    justifyContent: "center",
+    columnGap: 16,
+    backgroundColor: "#111827",
+    marginLeft: -16,
+    marginTop: 8,
+    width: "100%"
+  },
+  line: {
+    height: 1,
+    backgroundColor: "#4b5563",
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: "0%",
+    maxWidth: 1536
+  }
+});

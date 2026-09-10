@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, Image, TouchableOpacity, ActivityIndicator, Linking } from "react-native";
+import { StyleSheet, View, Text, FlatList, Image, TouchableOpacity, ActivityIndicator, Linking } from "react-native";
 
 // Coloque exatamente o CHANNEL ID do seu canal (que costuma começar com as letras "UC") 
 // Não confunda com o '@' alias da URL.
@@ -62,40 +62,32 @@ export const Videos = () => {
     const renderVideo = ({ item }: { item: VideoItem }) => {
         return (
             <View
-                className="mb-8 bg-[#1c1c1e] rounded-2xl overflow-hidden border border-white/5"
-                style={{
-                    shadowColor: "#000",
-                    shadowOffset: { width: 0, height: 4 },
-                    shadowOpacity: 0.3,
-                    shadowRadius: 5,
-                    elevation: 8,
-                }}
+                style={styles.card}
             >
                 <TouchableOpacity
                     activeOpacity={0.8}
                     // Acessa nativamente o aplicativo do Youtube passando a URL
                     onPress={() => Linking.openURL(item.link)}
-                    className="w-full bg-[#2a2a2d] justify-center items-center"
-                    style={{ aspectRatio: 16 / 9 }}
+                    style={styles.thumbnailContainer}
                 >
                     <Image
                         source={{ uri: item.thumbnail }}
-                        className="w-full h-full absolute"
+                        style={styles.thumbnail}
                         resizeMode="cover"
                     />
                     {/* Overlay Escuro com Ícone de Play para indicar ser clicável */}
-                    <View className="bg-black/60 w-16 h-16 rounded-full justify-center items-center border border-white/20">
-                        <Text className="text-white text-2xl font-bold ml-1">▶</Text>
+                    <View style={styles.playButton}>
+                        <Text style={styles.playIcon}>▶</Text>
                     </View>
                 </TouchableOpacity>
 
-                <View className="p-4">
-                    <Text className="font-bold text-lg text-white mb-3" numberOfLines={2}>
+                <View style={styles.cardContent}>
+                    <Text style={styles.cardTitle} numberOfLines={2}>
                         {item.title}
                     </Text>
-                    <View className="flex-row">
-                        <View className="bg-[#1bafff]/20 px-3 py-1 rounded-md border border-[#1bafff]/30">
-                            <Text className="text-[#1bafff] font-semibold text-xs text-center">
+                    <View style={styles.metadata}>
+                        <View style={styles.dateBadge}>
+                            <Text style={styles.dateLabel}>
                                 {item.publishedAt}
                             </Text>
                         </View>
@@ -106,23 +98,23 @@ export const Videos = () => {
     };
 
     return (
-        <View className="flex-1 w-full">
-            <View className="px-5 mt-6 mb-20 w-full flex-1">
-                <Text className="text-2xl font-bold text-white mb-6">Últimos Vídeos</Text>
+        <View style={styles.container}>
+            <View style={styles.content}>
+                <Text style={styles.title}>Últimos Vídeos</Text>
 
                 {loading ? (
-                    <ActivityIndicator size="large" color="#1bafff" className="mt-10" />
+                    <ActivityIndicator size="large" color="#1bafff" style={styles.loading} />
                 ) : (
                     <FlatList
                         data={videos}
                         keyExtractor={(item, index) => item.id + index.toString()}
                         renderItem={renderVideo}
                         showsVerticalScrollIndicator={false}
-                        contentContainerStyle={{ paddingBottom: 40 }}
+                        contentContainerStyle={styles.listContent}
                         ListEmptyComponent={
-                            <View className="flex-1 mt-10 p-5 bg-[#1c1c1e] rounded-xl border border-white/5 items-center">
-                                <Text className="text-gray-400 text-center font-bold mb-2">Canal não configurado ⚠️</Text>
-                                <Text className="text-gray-500 text-center text-sm">
+                            <View style={styles.emptyState}>
+                                <Text style={styles.emptyTitle}>Canal não configurado ⚠️</Text>
+                                <Text style={styles.emptyDescription}>
                                     Substitua a variável CHANNEL_ID no código pelo código da sua página.
                                 </Text>
                             </View>
@@ -133,3 +125,134 @@ export const Videos = () => {
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+  listContent: {
+    paddingBottom: 40,
+  },
+  card: {
+    marginBottom: 32,
+    backgroundColor: "#1c1c1e",
+    borderRadius: 16,
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.05)",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 8
+  },
+  thumbnailContainer: {
+    width: "100%",
+    backgroundColor: "#2a2a2d",
+    justifyContent: "center",
+    alignItems: "center",
+    aspectRatio: 16 / 9
+  },
+  thumbnail: {
+    width: "100%",
+    height: "100%",
+    position: "absolute"
+  },
+  playButton: {
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    width: 64,
+    height: 64,
+    borderRadius: 9999,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.2)"
+  },
+  playIcon: {
+    color: "#ffffff",
+    fontSize: 24,
+    lineHeight: 32,
+    fontWeight: "700",
+    marginLeft: 4
+  },
+  cardContent: {
+    padding: 16
+  },
+  cardTitle: {
+    fontWeight: "700",
+    fontSize: 18,
+    lineHeight: 28,
+    color: "#ffffff",
+    marginBottom: 12
+  },
+  metadata: {
+    flexDirection: "row"
+  },
+  dateBadge: {
+    backgroundColor: "rgba(27, 175, 255, 0.2)",
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 4,
+    paddingBottom: 4,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: "rgba(27, 175, 255, 0.3)"
+  },
+  dateLabel: {
+    color: "#1bafff",
+    fontWeight: "600",
+    fontSize: 12,
+    lineHeight: 16,
+    textAlign: "center"
+  },
+  container: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: "0%",
+    width: "100%"
+  },
+  content: {
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginTop: 24,
+    marginBottom: 80,
+    width: "100%",
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: "0%"
+  },
+  title: {
+    fontSize: 24,
+    lineHeight: 32,
+    fontWeight: "700",
+    color: "#ffffff",
+    marginBottom: 24
+  },
+  loading: {
+    marginTop: 40
+  },
+  emptyState: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: "0%",
+    marginTop: 40,
+    padding: 20,
+    backgroundColor: "#1c1c1e",
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.05)",
+    alignItems: "center"
+  },
+  emptyTitle: {
+    color: "#9ca3af",
+    textAlign: "center",
+    fontWeight: "700",
+    marginBottom: 8
+  },
+  emptyDescription: {
+    color: "#6b7280",
+    textAlign: "center",
+    fontSize: 14,
+    lineHeight: 20
+  }
+});

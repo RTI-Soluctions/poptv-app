@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, Image, TouchableOpacity, ActivityIndicator, Linking } from "react-native";
+import { StyleSheet, View, Text, FlatList, Image, TouchableOpacity, ActivityIndicator, Linking } from "react-native";
 
 type NewsItem = {
     id: number;
@@ -51,39 +51,31 @@ export const News = () => {
 
     const renderNewsItem = ({ item }: { item: NewsItem }) => (
         <View
-            className="mb-6 bg-[#1c1c1e] rounded-2xl overflow-hidden border border-white/5"
-            style={{
-                shadowColor: "#000",
-                shadowOffset: { width: 0, height: 4 },
-                shadowOpacity: 0.3,
-                shadowRadius: 5,
-                elevation: 8,
-            }}
+            style={styles.card}
         >
             <TouchableOpacity
                 activeOpacity={0.8}
                 onPress={() => Linking.openURL(item.link)}
-                className="w-full bg-[#2a2a2d] justify-center items-center"
-                style={{ aspectRatio: 16 / 9 }}
+                style={styles.thumbnailContainer}
             >
                 <Image
                     source={{ uri: item.thumbnail }}
-                    className="w-full h-full absolute"
+                    style={styles.thumbnail}
                     resizeMode="cover"
                 />
                 {/* Badge Vermelho de Notícia Destacada */}
-                <View className="absolute top-3 left-3 bg-[#e63946] px-3 py-1 rounded-md">
-                    <Text className="text-white font-bold text-xs tracking-wider">DESTAQUE</Text>
+                <View style={styles.badge}>
+                    <Text style={styles.badgeLabel}>DESTAQUE</Text>
                 </View>
             </TouchableOpacity>
 
-            <View className="p-4">
-                <Text className="font-bold text-lg text-white mb-3" numberOfLines={3}>
+            <View style={styles.cardContent}>
+                <Text style={styles.cardTitle} numberOfLines={3}>
                     {item.title}
                 </Text>
-                <View className="flex-row">
-                    <View className="bg-white/10 px-3 py-1 rounded-md border border-white/20">
-                        <Text className="text-gray-300 font-semibold text-xs text-center">
+                <View style={styles.metadata}>
+                    <View style={styles.dateBadge}>
+                        <Text style={styles.dateLabel}>
                             {item.publishedAt}
                         </Text>
                     </View>
@@ -93,22 +85,22 @@ export const News = () => {
     );
 
     return (
-        <View className="flex-1 w-full">
-            <View className="px-5 mt-6 mb-20 w-full flex-1">
-                <Text className="text-2xl font-bold text-white mb-6">Portal de Notícias</Text>
+        <View style={styles.container}>
+            <View style={styles.content}>
+                <Text style={styles.title}>Portal de Notícias</Text>
 
                 {loading ? (
-                    <ActivityIndicator size="large" color="#1bafff" className="mt-10" />
+                    <ActivityIndicator size="large" color="#1bafff" style={styles.loading} />
                 ) : (
                     <FlatList
                         data={news}
                         keyExtractor={(item) => item.id.toString()}
                         renderItem={renderNewsItem}
                         showsVerticalScrollIndicator={false}
-                        contentContainerStyle={{ paddingBottom: 40 }}
+                        contentContainerStyle={styles.listContent}
                         ListEmptyComponent={
-                            <View className="flex-1 mt-10 p-5 bg-[#1c1c1e] rounded-xl border border-white/5 items-center">
-                                <Text className="text-gray-400 text-center font-bold mb-2">Nenhuma notícia encontrada ⚠️</Text>
+                            <View style={styles.emptyState}>
+                                <Text style={styles.emptyTitle}>Nenhuma notícia encontrada ⚠️</Text>
                             </View>
                         }
                     />
@@ -117,3 +109,129 @@ export const News = () => {
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+  listContent: {
+    paddingBottom: 40,
+  },
+  card: {
+    marginBottom: 24,
+    backgroundColor: "#1c1c1e",
+    borderRadius: 16,
+    overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.05)",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 8
+  },
+  thumbnailContainer: {
+    width: "100%",
+    backgroundColor: "#2a2a2d",
+    justifyContent: "center",
+    alignItems: "center",
+    aspectRatio: 16 / 9
+  },
+  thumbnail: {
+    width: "100%",
+    height: "100%",
+    position: "absolute"
+  },
+  badge: {
+    position: "absolute",
+    top: 12,
+    left: 12,
+    backgroundColor: "#e63946",
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 4,
+    paddingBottom: 4,
+    borderRadius: 6
+  },
+  badgeLabel: {
+    color: "#ffffff",
+    fontWeight: "700",
+    fontSize: 12,
+    lineHeight: 16,
+    letterSpacing: 0.6
+  },
+  cardContent: {
+    padding: 16
+  },
+  cardTitle: {
+    fontWeight: "700",
+    fontSize: 18,
+    lineHeight: 28,
+    color: "#ffffff",
+    marginBottom: 12
+  },
+  metadata: {
+    flexDirection: "row"
+  },
+  dateBadge: {
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 4,
+    paddingBottom: 4,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.2)"
+  },
+  dateLabel: {
+    color: "#d1d5db",
+    fontWeight: "600",
+    fontSize: 12,
+    lineHeight: 16,
+    textAlign: "center"
+  },
+  container: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: "0%",
+    width: "100%"
+  },
+  content: {
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginTop: 24,
+    marginBottom: 80,
+    width: "100%",
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: "0%"
+  },
+  title: {
+    fontSize: 24,
+    lineHeight: 32,
+    fontWeight: "700",
+    color: "#ffffff",
+    marginBottom: 24
+  },
+  loading: {
+    marginTop: 40
+  },
+  emptyState: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: "0%",
+    marginTop: 40,
+    padding: 20,
+    backgroundColor: "#1c1c1e",
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.05)",
+    alignItems: "center"
+  },
+  emptyTitle: {
+    color: "#9ca3af",
+    textAlign: "center",
+    fontWeight: "700",
+    marginBottom: 8
+  }
+});
