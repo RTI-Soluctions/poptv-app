@@ -1,6 +1,8 @@
 import React, { forwardRef, useRef, useImperativeHandle } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import NewVideoPlayer, { VideoPlayerRef } from './NewVideoPlayer';
+import Animated from 'react-native-reanimated';
+import { playerTransition } from './playerTransition';
 
 export type MainContainerRef = {
   refreshPlayer: () => void;
@@ -8,7 +10,7 @@ export type MainContainerRef = {
   pause: () => void;
 };
 
-export const MainContainer = forwardRef<MainContainerRef>((_, ref) => {
+export const MainContainer = forwardRef<MainContainerRef, { fullscreen?: boolean }>(({ fullscreen = false }, ref) => {
   const playerRef = useRef<VideoPlayerRef>(null);
 
   useImperativeHandle(ref, () => ({
@@ -23,16 +25,20 @@ export const MainContainer = forwardRef<MainContainerRef>((_, ref) => {
   }));
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Ao Vivo</Text>
-      <NewVideoPlayer ref={playerRef} />
-    </View>
+    <Animated.View layout={playerTransition} style={[styles.container, fullscreen && styles.fullscreen]}>
+      {!fullscreen && <Text style={styles.title}>Ao Vivo</Text>}
+      <NewVideoPlayer ref={playerRef} fullscreen={fullscreen} />
+    </Animated.View>
   );
 });
 
 MainContainer.displayName = 'MainContainer';
 
 const styles = StyleSheet.create({
+  fullscreen: {
+    flex: 1,
+    marginTop: 0,
+  },
   container: {
     flexDirection: "column",
     justifyContent: "space-around",

@@ -8,7 +8,13 @@ import { News } from "../components/News";
 import { useAppContext } from "../context/AppContext";
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { MainContainer, MainContainerRef } from "../components/MainContainer";
-import { Alert, BackHandler, Platform, StyleSheet, View, Image, TouchableOpacity, ScrollView, RefreshControl } from "react-native";
+import { Alert, BackHandler, Platform, StyleSheet, View, Image, TouchableOpacity, RefreshControl, useWindowDimensions } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
+import { NavigationBar } from "expo-navigation-bar";
+import * as ScreenOrientation from "expo-screen-orientation";
+import Animated from 'react-native-reanimated';
+import { playerTransition } from '../components/playerTransition';
 import { ExitModal } from "../components/ExitModal";
 import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
 import * as Burnt from "burnt";
@@ -21,15 +27,37 @@ export const Home = () => {
   const [exitVisible, setExitVisible] = useState(false);
   const [exitAction, setExitAction] = useState<"close" | "pip" | null>(null);
   const actionInProgress = useRef(false);
+  const { width, height } = useWindowDimensions();
+  const landscape = width > height;
+  const [fullscreenDismissed, setFullscreenDismissed] = useState(false);
+  const fullscreen = isHome && landscape && !fullscreenDismissed;
+
+  useEffect(() => {
+    if (Platform.OS === 'web') return;
+    // SENSOR allows physical rotation on Android, including when the system
+    // preference is portrait. Restore the app default outside the live screen.
+    const orientation = isHome && Platform.OS === 'android'
+      ? ScreenOrientation.lockPlatformAsync({ screenOrientationConstantAndroid: 4 })
+      : ScreenOrientation.unlockAsync();
+    void orientation.catch((error) => console.warn('Não foi possível liberar a rotação:', error));
+  }, [isHome]);
+
+  useEffect(() => {
+    if (!landscape || !isHome) setFullscreenDismissed(false);
+  }, [landscape, isHome]);
 
   useEffect(() => {
     if (Platform.OS !== "android") return;
     const subscription = BackHandler.addEventListener("hardwareBackPress", () => {
+      if (fullscreen) {
+        setFullscreenDismissed(true);
+        return true;
+      }
       if (!actionInProgress.current) setExitVisible(true);
       return true;
     });
     return () => subscription.remove();
-  }, []);
+  }, [fullscreen]);
 
   const chooseExitAction = (action: "close" | "pip") => {
     if (actionInProgress.current) return;
@@ -117,21 +145,28 @@ export const Home = () => {
 
   return (
     <React.Fragment>
+      <StatusBar style="light" hidden={fullscreen} />
+      <NavigationBar hidden={fullscreen} />
       <ExitModal visible={exitVisible} onClose={() => chooseExitAction("close")} onMinimize={() => chooseExitAction("pip")} onDismiss={() => setExitVisible(false)} />
-      <View style={styles.container}>
-        <View style={styles.header}>
+      <SafeAreaView style={styles.container} edges={fullscreen ? [] : ['top', 'bottom', 'left', 'right']}>
+        <View style={[styles.header, fullscreen && styles.hidden]}>
           <TouchableOpacity>
             <Image style={styles.logo} source={logoPop} />
           </TouchableOpacity>
           <Toast visibilityTime={4000} autoHide={true} position="top" />
         </View>
-        <Divisor />
+        {!fullscreen && <Divisor />}
         {isHome && (
-          <ScrollView
-            style={styles.scrollView}
+          <Animated.ScrollView
+            layout={playerTransition}
+            removeClippedSubviews={false}
+            style={[styles.scrollView, fullscreen && styles.fullscreenScroll]}
+            contentContainerStyle={fullscreen ? styles.fullscreenContent : undefined}
+            scrollEnabled={!fullscreen}
             refreshControl={
               <RefreshControl
-                refreshing={refreshing}
+                enabled={!fullscreen}
+                refreshing={!fullscreen && refreshing}
                 onRefresh={onRefresh}
                 tintColor="#ffffff"
                 colors={["#ffffff"]}
@@ -139,8 +174,8 @@ export const Home = () => {
               />
             }
           >
-            <MainContainer ref={mainContainerRef} />
-          </ScrollView>
+            <MainContainer ref={mainContainerRef} fullscreen={fullscreen} />
+          </Animated.ScrollView>
         )}
         {isPrograms && <Programation />}
         {isAboutUs && <AboutUs />}
@@ -148,13 +183,16 @@ export const Home = () => {
         {isNews && <News />}
 
         {/* Navigation Bar fixada no fundo */}
-        <Navbar />
-      </View>
+        {!fullscreen && <Navbar />}
+      </SafeAreaView>
     </React.Fragment>
   );
 };
 
 const styles = StyleSheet.create({
+  hidden: { display: 'none' },
+  fullscreenScroll: { marginLeft: 0 },
+  fullscreenContent: { flex: 1 },
   container: {
     flexGrow: 1,
     flexShrink: 1,
@@ -165,7 +203,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
-    paddingTop: 48,
+    paddingTop: 16,
     paddingBottom: 8,
     justifyContent: "center",
     alignItems: "center",

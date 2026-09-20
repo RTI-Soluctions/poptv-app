@@ -3,15 +3,9 @@
     "name": "Porto Alegre 24h TV",
     "slug": "poptv-app",
     "version": "3.6.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "orientation": "default",
+    "icon": "./assets/Icon.png",
     "userInterfaceStyle": "dark",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/splash-poa.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000000"
-    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ormartins.poptvapp",
@@ -27,7 +21,7 @@
         "INTERNET"
       ],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./assets/Icon.png",
         "backgroundColor": "#000000"
       },
       "package": "com.ormartins.poptvapp"
@@ -44,6 +38,14 @@
     },
     "plugins": [
       [
+        "expo-splash-screen",
+        {
+          "image": "./assets/Splash-POA.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#000000"
+        }
+      ],
+      [
         "expo-video",
         {
           "supportsBackgroundPlayback": true,
@@ -54,14 +56,7 @@
         "expo-build-properties",
         {
           "android": {
-            "useLegacyPackaging": false,
-            "targetSdkVersion": 35,
-            "compileSdkVersion": 35,
-            "packagingOptions": {
-              "jniLibs": {
-                "useLegacyPackaging": false
-              }
-            }
+            "useLegacyPackaging": false
           }
         }
       ],
@@ -75,7 +70,9 @@
         }
       ]
     ],
-    "runtimeVersion": "3.2.0",
+    "runtimeVersion": {
+      "policy": "fingerprint"
+    },
     "updates": {
       "url": "https://u.expo.dev/c3347070-5c2d-48de-b8e1-67ac53e5e918"
     }

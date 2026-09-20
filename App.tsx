@@ -6,6 +6,7 @@ import { useKeepAwake } from "expo-keep-awake";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useFonts } from "expo-font";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts(Ionicons.font);
@@ -25,10 +26,11 @@ export default function App() {
   }
 
   return (
-    <MyContextProvider>
-      <Home />
-      <StatusBar style="light" />
-    </MyContextProvider>
+    <SafeAreaProvider>
+      <MyContextProvider>
+        <Home />
+      </MyContextProvider>
+    </SafeAreaProvider>
   );
 }
 
