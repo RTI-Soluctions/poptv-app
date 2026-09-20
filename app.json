@@ -3,7 +3,7 @@
     "name": "Porto Alegre 24h TV",
     "slug": "poptv-app",
     "version": "3.6.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/Icon.png",
     "userInterfaceStyle": "dark",
     "ios": {
